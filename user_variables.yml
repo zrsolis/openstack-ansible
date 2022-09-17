@@ -1,0 +1,177 @@
+---
+debug: false
+region: ZO-PNW
+install_method: source
+openstack_distrib_code_name: "Yoga"
+dhcp_domain: cloud.zeroone.tech
+openstack_domain: cloud.zeroone.tech
+availability_zone: "ZO-PNW-LVW"
+
+# Ceph config
+ceph_conf_file: |
+  [global]
+  fsid = 919e214a-3306-11ed-9c01-83df3116c858 
+  mon_initial_members = ceph01,ceph02,ceph03
+  mon_host = [v2:10.0.16.1:3300,v1:10.0.16.1:6789],[v2:10.0.16.2:3300,v1:10.0.16.2:6789],[v2:10.0.16.3:3300,v1:10.0.16.3:6789]
+ceph_keyrings_dir: "/etc/openstack_deploy/ceph-keyrings"
+
+# Rabbitmq config
+rabbitmq_use_ssl: true 
+rabbitmq_monitoring_userid: "zoadmin"
+rabbitmq_port_bindings:
+  ssl_listeners:
+    "0.0.0.0": 5671
+  tcp_listeners:
+    "0.0.0.0": 5672
+
+## HAProxy config
+haproxy_keepalived_external_vip_cidr: "10.0.18.253/24"
+haproxy_keepalived_internal_vip_cidr: "{{internal_lb_vip_address}}/24"
+haproxy_keepalived_external_interface: br-mgmt
+haproxy_keepalived_internal_interface: br-mgmt
+#haproxy_ssl: True
+#haproxy_ssl_letsencrypt_enable: True
+#haproxy_ssl_letsencrypt_install_method: "distro"
+#haproxy_ssl_letsencrypt_email: "admin@zeroone.tech"
+haproxy_user_ssl_cert: "/etc/ssl/certs/zerooone.crt"
+haproxy_user_ssl_key: "/etc/ssl/private/zeroone.key"
+haproxy_user_ssl_ca_cert: "/etc/ssl/certs/zerooone_ca.crt"
+openstack_service_publicuri_proto: https
+haproxy_extra_services:
+  - service:
+      haproxy_service_name: ceph_rgw
+      haproxy_backend_nodes: "{{ groups['cephrgwdummy_hosts'] }}"
+      haproxy_ssl: True
+      haproxy_port: 8080
+      haproxy_balance_alg: source
+      haproxy_balance_type: http
+      haproxy_backend_options:
+        - "httpchk HEAD /"
+
+## Cinder configs
+cinder_service_region: "{{ region }}"
+cinder_ceph_client: "cinder"
+cinder_backends:
+  rbd:
+    volume_driver: cinder.volume.drivers.rbd.RBDDriver
+    rbd_pool: volumes
+    rbd_ceph_conf: /etc/ceph/ceph.conf
+    rbd_store_chunk_size: 8
+    volume_backend_name: rbd
+    rbd_user: "{{ cinder_ceph_client }}"
+    rbd_secret_uuid: "{{ cinder_ceph_client_uuid }}"
+    report_discard_supported: true
+cinder_backend_rbd_inuse: '{{ (cinder_backends|default("")|to_json).find("cinder.volume.drivers.rbd.RBDDriver") != -1 }}'
+cinder_active_active_cluster: "{{ cinder_backend_rbd_inuse }}"
+cinder_active_active_cluster_name: ceph
+cinder_storage_availability_zone: "{{ availability_zone }}"
+cinder_service_backup_program_enabled: True
+cinder_service_backup_driver: cinder.backup.drives.ceph.CephBackupDriver
+cinder_service_backup_ceph_user: cinder-backup
+cinder_service_backup_ceph_pool: backups
+
+## Neutron config
+neutron_service_region: "{{ region }}"
+neutron_plugin_type: ml2.ovn
+neutron_plugin_base:
+  - neutron.services.ovn_l3.plugin.OVNL3RouterPlugin
+neutron_ml2_drivers_type: "flat,vlan,geneve"
+neutron_neutron_conf_overrides:
+  DEFAULT:
+    l3_ha: False
+    default_availability_zones: "ZO-PNW-LKC"
+  agent:
+    availability_zone: "{{ availability_zone }}"
+
+## horizon config
+horizon_service_region: "{{ region }}"
+horizon_keystone_multidomain_support: True
+horizon_keystone_default_domain: Default
+horizon_enable_password_retrieve: True
+horizon_enable_ha_router: False
+horizon_default_dns_nameservers: ["1.1.1.1","8.8.8.8"]
+
+## Keystone config
+keystone_service_region: "{{ region }}"
+keystone_conf_overrides:
+  IDENTITY:
+    domain_specific_drivers_enabled: True
+
+## Nova config
+nova_service_region: "{{ region }}"
+nova_ceph_client: "{{ cinder_ceph_client }}"
+nova_ceph_client_uuid: "{{ cinder_ceph_client_uuid }}"
+nova_libvirt_hw_disk_discard: 'unmap'
+nova_libvirt_disk_cachemodes: 'network=writeback'
+nova_libvirt_images_rbd_pool: 'vms'
+nova_cinder_rbd_inuse: True
+nova_nova_conf_overrides:
+  DEFAULT:
+    internal_service_availability_zone: "{{ availability_zone }}"
+    default_availability_zone: "{{ availability_zone }}"
+    default_schedule_zone: "{{ availability_zone }}"
+  cinder:
+    cross_az_attach: True
+nova_enabled_mdev_types:
+  - type: nvidia-662
+#    address: 0000:af:00.0
+
+## Glance config
+glance_service_region: "{{ region }}"
+glance_default_store: rbd
+glance_rbd_store_pool: images
+
+## Galera config 
+galera_cluster_name: "os-galera-cluster"
+openrc_region_name: "{{ region }}"
+galera_max_connections: 1600
+galera_use_ssl: true
+
+## Placement config
+placement_service_region: "{{ region }}"
+
+## Heat config
+heat_service_region: "{{ region }}"
+
+## Octavia config
+octavia_service_region: "{{ region }}"
+octavia_management_net_subnet_allocation_pools: "172.30.0.3-172.31.255.254"
+octavia_provider_network_name: lbaas
+
+openstack_pki_install_ca:
+   - name: "ZORoot"
+openstack_pki_regen_ca: true
+openstack_pki_regen_cert: true
+openstack_pki_authorities:
+   - name: "ZORoot"
+     provider: selfsigned
+     email_address: "admin@zeroone.tech"
+     basic_constraints: "CA:TRUE"
+     cn: "ZeroOne Technology Root CA"
+     country_name: "US"
+     state_or_province_name: "Washington"
+     organization_name: "ZeroOne Technology"
+     organizational_unit_name: "IT Security"
+     key_usage:
+       - digitalSignature
+       - cRLSign
+       - keyCertSign
+     not_after: "+3650d"
+   - name: "ZOIntermediate"
+     email_address: "admin@zeroone.tech"
+     provider: ownca
+     cn: "ZeroOne Technology Intermediate CA"
+     country_name: "US"
+     basic_constraints: "CA:TRUE,pathlen:0"
+     state_or_province_name: "Washington"
+     organization_name: "ZeroOne Technology"
+     organizational_unit_name: "IT Security"
+     key_usage:
+       - digitalSignature
+       - cRLSign
+       - keyCertSign
+     not_after: "+365d"
+     signed_by: "ZORoot"
+openstack_pki_service_intermediate_cert_name: "ZOIntermediate"
+
+     #openstack_pki_service_intermediate_cert_path: "{{ openstack_pki_dir ~ '/roots/' ~ openstack_pki_service_intermediate_cert_name ~ '/certs/' ~ openstack_pki_service_intermediate_cert_name ~ '.crt' }}"
