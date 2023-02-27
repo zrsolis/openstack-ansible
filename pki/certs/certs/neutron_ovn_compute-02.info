@@ -1,0 +1,116 @@
+authority_cert_issuer: null
+authority_cert_serial_number: null
+authority_key_identifier: 4b:c5:aa:7a:30:cc:13:c7:5d:46:48:d9:1e:bf:b9:08:e3:8c:d8:ba
+basic_constraints: null
+basic_constraints_critical: false
+changed: false
+expired: false
+extended_key_usage: null
+extended_key_usage_critical: false
+extensions_by_oid:
+    2.5.29.14:
+        critical: false
+        value: BBSG5d/m68wYBRxTVvfPYqX33RGvRA==
+    2.5.29.17:
+        critical: false
+        value: MBKCCmNvbXB1dGUtMDKHBAoAEgg=
+    2.5.29.35:
+        critical: false
+        value: MBaAFEvFqnowzBPHXUZI2R6/uQjjjNi6
+failed: false
+fingerprints:
+    blake2b: d0:28:ea:1c:20:42:5c:86:51:ee:e8:ed:e8:e0:3b:7a:12:b2:41:92:8b:17:a8:b2:52:d5:6a:62:29:eb:54:a4:92:2c:cd:01:8a:ba:0d:aa:0c:7b:e2:60:17:c2:5d:7f:fa:7f:f5:4c:e5:6e:b7:12:e6:4e:c6:11:a2:f0:be:e2
+    blake2s: 94:3b:86:e6:08:a1:a1:c7:f1:f3:e1:11:57:66:b0:c7:2e:90:7e:04:59:62:5c:03:40:7a:f2:cb:6b:d4:f0:9c
+    md5: e7:52:f0:9b:15:c4:a9:11:5f:2d:6a:e0:cf:e9:56:2a
+    sha1: 4c:a0:87:a9:5a:4c:b7:5e:09:d0:c3:7d:0f:51:5e:fb:65:cb:ab:93
+    sha224: 4f:5b:56:35:f6:35:46:9c:da:10:46:aa:8b:17:6b:8f:49:90:cc:9b:91:11:be:cc:fb:d8:58:52
+    sha256: a6:28:52:2d:c1:4d:8f:82:4d:0a:cd:cc:25:35:ce:22:9e:7a:84:10:53:ae:65:a7:67:37:b3:93:2d:bc:53:ef
+    sha384: 04:df:cd:de:74:e9:e3:a9:fb:17:0b:d6:99:1b:c2:7f:56:03:16:9a:76:7b:2c:1d:1c:12:92:36:c6:3d:ca:b4:65:1b:a5:c2:92:3c:38:44:dc:84:b1:ab:82:93:ea:2c
+    sha3_224: dc:ab:d0:9c:33:7f:67:9c:21:db:16:4d:41:82:cb:24:ba:81:a8:6c:92:4e:f9:14:70:78:66:7e
+    sha3_256: 06:33:80:cf:df:14:14:7d:2a:35:9a:3a:bb:87:fc:7f:38:1e:41:45:32:a0:71:36:18:5a:a0:d4:2f:83:1c:bb
+    sha3_384: f5:ac:73:b4:de:95:93:94:d6:15:5a:69:22:e5:b7:31:08:60:ed:d9:2e:37:6d:2b:3b:e2:a2:b7:bf:ff:53:79:9b:ff:96:15:45:9c:c8:ec:66:06:68:dd:a7:5b:54:c2
+    sha3_512: 28:e0:3f:cb:e4:d5:2b:b4:11:b0:66:5c:98:b1:0e:3c:e3:17:ea:48:cf:26:a7:27:a5:07:c6:d5:1d:b6:57:3f:9e:88:e7:49:d8:81:6d:fd:db:0a:54:e5:25:9e:34:ef:47:41:2a:c2:13:86:ec:7b:0f:7b:b2:01:84:c3:aa:28
+    sha512: c0:5a:45:74:4d:b8:3c:22:c3:5f:1a:e0:5b:13:72:59:09:4c:5e:54:9f:81:98:e3:a7:31:40:a5:2c:60:ec:4b:3e:b8:e2:6d:93:79:b0:5e:c1:ee:5a:13:a4:c0:69:8f:c4:b2:06:30:aa:d4:03:6c:3e:6e:ec:e6:fe:1c:3a:c5
+    shake_128: 1d:c3:2c:f9:13:94:ff:1d:0c:0f:fe:88:43:73:1a:a4:26:dc:57:8d:dc:c5:e0:fa:a6:dd:a2:af:1a:d1:89:bb
+    shake_256: 42:25:83:50:46:63:70:5e:32:3c:2d:ae:1f:51:76:f0:aa:43:bb:99:18:cd:96:1b:74:09:c1:87:be:a0:0b:b6
+issuer:
+    commonName: ZeroOne Technology Intermediate CA
+    countryName: US
+    stateOrProvinceName: Washington
+issuer_ordered:
+-   - countryName
+    - US
+-   - stateOrProvinceName
+    - Washington
+-   - commonName
+    - ZeroOne Technology Intermediate CA
+key_usage: null
+key_usage_critical: false
+not_after: 20330223213344Z
+not_before: 20230226213344Z
+ocsp_must_staple: null
+ocsp_must_staple_critical: false
+ocsp_uri: null
+public_key: '-----BEGIN PUBLIC KEY-----
+
+    MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAzeYyWBz7QId4fAS22/q8
+
+    RC4UH64SdsNRg81T0GO/V/wyjTn/P/LQJ69GQwAUGjxFv5Ubokp5crqZW1oGp2bf
+
+    jR7D0tRckrN7SJMYf3cr2JtACwTvOVrNM5n37qBFghwEkzfdYyh8HIQI2TnRLGr1
+
+    EN4blEenB7G8xhjp0oYgVPdkDH5SNvd/qHWhvSZSVu4kO//myco+ImqHxZLl8Myc
+
+    KZyKGvAdywJGdXVukuRbT66CvddnNxSz9SFrtSNq0cwykrH7MsQGysxi4E+8VIm2
+
+    /FCBi94Py93kiwlVhz3FHO8UuDZ4PQOMMlLGPJCmJGdfgeJ4EXzVcAEoxT6sCbWf
+
+    5jeDa7PNgzNR/xosvzERAXZB47rc5rjOwZBZ8+iIv6z+QSDu4YF1FA6WKxImLCO3
+
+    If5HT9NKXyfVF3KCMimfYu0ZGbJHDkC+QuufG9nK7b3KErMy0zUrcB/wfpcOsSX5
+
+    kBGOC6g/GTR2eYt18OopjApXgYdv+EmPxDjnH8J+v+jX8KwSLKWPjGxq3yljFlcv
+
+    UXsk2yfZ0Lod7fahrd/fpTxsK/nqoxE9KUczcXZbB5uDZ2TJZ1tftnSLVsOr2Zmn
+
+    /LZHGqyvIcJvdGUPrilmwakQRWd0Sb71T41HRb9zenlCBQBMJlPOEstO1vzDtBZp
+
+    +55VykBL5WCT8H+tC9AQTo8CAwEAAQ==
+
+    -----END PUBLIC KEY-----
+
+    '
+public_key_data:
+    exponent: 65537
+    modulus: 839995473109015287805703158243307323914152812487176887086554960198949341121971309402444059843734357230705323919179674933751298881871419797449661885672919064422233596105520814252085633102046809768196373247009175070129245927294150173826945368805126755727101457146046537944968231020613617515932666258948161709407237193310301054304861329687481535993765445834690392266480470348693969016205904899492489078202727976731746790886362663179269281905792618077712432581613904274985005365780446083818128131317310655891062911414630528504066940664345867568060897516420183499598628985203701170623670073657564120500174150801224732723609898114044365588000165575713852643098849958435182933187074377385843591876901746378260865012473166994772837884005713040642053056768245204680990426996838028233091925875021269222287242925207622867383843157709636470148332038988401478582865925529074194414523357142160451299553339965323637506028655948846271217340333619566898681358733806803909334175152447516710862005285227717422519558740734168949353596090537062749051330012965978118378230963199151175922047060426496859357614188864138108718118887703903246427555092526084778614660504113424788408873286643386775502687367011693418263940726100858546088546197115788257523682959
+    size: 4096
+public_key_fingerprints:
+    blake2b: 22:d8:e2:9b:78:65:53:1d:0e:76:86:27:e7:60:86:f7:0b:c2:20:0a:bc:c3:d0:3e:4f:8c:66:68:f0:94:0e:6b:cc:83:c9:e4:86:86:51:21:62:19:70:27:67:2a:d4:e5:99:bf:88:c6:08:dc:55:27:98:de:48:f0:0b:cf:e5:4e
+    blake2s: 69:e0:7d:6e:5d:17:02:20:1f:21:f6:ee:2b:9f:b2:9d:2b:20:ba:81:04:56:9f:b2:8a:16:3d:a2:8e:11:36:77
+    md5: a9:d8:ff:db:28:e6:c5:2b:73:3d:d3:4b:5c:81:7e:19
+    sha1: f9:b7:2d:35:d9:77:81:71:e2:7a:fb:1e:92:6b:a3:b3:90:31:d9:89
+    sha224: 63:54:b6:4b:23:7a:9d:1c:40:76:a2:54:ff:13:f3:b8:d4:0d:e0:24:37:d4:bf:b5:f4:8d:df:b9
+    sha256: d2:d3:1a:db:c7:96:c6:69:66:5b:17:69:5c:63:eb:fc:4f:30:f6:b0:47:fc:ab:86:80:04:c9:12:01:f8:0f:13
+    sha384: c4:49:cc:8b:fd:70:78:7f:32:f4:68:98:93:9e:0b:a5:6e:b2:05:cb:4c:07:43:1a:c3:78:e3:ad:ed:0e:4c:c6:94:11:99:84:87:2d:9f:e8:91:e4:dc:8d:bc:fa:da:a6
+    sha3_224: 4f:4f:39:8e:c0:72:af:91:b8:ca:23:a7:ee:23:c5:77:13:04:d8:f6:eb:cc:9a:81:af:a0:d8:4b
+    sha3_256: bc:25:f1:27:15:fa:54:45:f4:95:1d:c9:74:27:90:65:26:c9:ed:b7:7b:36:74:05:db:5d:38:72:6b:83:0c:91
+    sha3_384: 62:36:50:4b:9a:2c:e6:78:d6:3a:55:f9:c4:a4:62:4c:c7:e2:78:90:ba:d2:73:2b:e5:67:62:2f:d1:d0:7c:c4:2a:37:9a:68:89:f7:92:22:79:b6:da:ef:a1:08:da:4f
+    sha3_512: 2b:09:9c:6b:39:16:9d:9d:ed:8d:33:0d:7b:64:25:50:56:70:b3:99:04:48:7e:4a:ee:d5:78:83:7d:d1:14:bd:84:e6:35:10:4d:27:ac:62:61:0d:62:6f:b2:ed:50:fa:1f:18:3a:d3:f5:dd:22:41:17:ed:ae:0c:c7:7e:c2:8a
+    sha512: 46:7d:69:e1:a8:76:69:9f:7c:f2:66:a5:06:04:c8:0b:e3:98:e6:fc:60:26:e3:ad:68:82:79:ed:ce:dc:7e:24:cc:37:4d:da:33:55:2c:56:6f:68:58:e4:af:d6:22:f8:8f:a1:9b:22:78:99:9c:86:90:7d:c0:91:ab:70:fd:36
+    shake_128: 12:4b:9b:aa:cb:81:34:64:33:77:9c:77:d1:72:32:9e:5b:32:6c:06:53:f5:c9:d3:48:bb:a7:cc:2a:18:c8:1a
+    shake_256: 92:6b:ab:44:e7:e2:9f:29:51:7e:34:66:cd:0f:97:a9:a7:78:6c:44:dd:d9:e7:3e:57:61:ca:e0:f7:0f:eb:c0
+public_key_type: RSA
+serial_number: 406648576532450414813729330131270479930960843297
+signature_algorithm: sha256WithRSAEncryption
+subject:
+    commonName: compute-02
+subject_alt_name:
+- DNS:compute-02
+- IP:10.0.18.8
+subject_alt_name_critical: false
+subject_key_identifier: 86:e5:df:e6:eb:cc:18:05:1c:53:56:f7:cf:62:a5:f7:dd:11:af:44
+subject_ordered:
+-   - commonName
+    - compute-02
+valid_at: {}
+version: 3

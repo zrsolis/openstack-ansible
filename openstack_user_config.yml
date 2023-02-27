@@ -2,55 +2,96 @@ cidr_networks:
   container: 10.0.18.0/24
   tunnel: 10.0.19.0/24
   storage: 10.0.16.0/24
+  lbaas: 172.17.0.0/16
 used_ips:
   - "10.0.19.1,10.0.19.50"
   - "10.0.18.1,10.0.18.50"
   - "10.0.16.1,10.0.16.50"
+  - "172.31.1.0,172.31.3.255" 
 global_overrides:
   internal_lb_vip_address: 10.0.18.254
   external_lb_vip_address: cloud.zeroone.tech
   management_bridge: "br-mgmt"
-  provider_networks:
-   - network:
-        group_binds:
-          - neutron_ovn_controller
-        container_bridge: "br-gen"
-        container_type: "veth"
-        container_mtu: "9000"
-        ip_from_q: "tunnel"
-        type: "geneve"
-        range: "1:1000"
-        net_name: "geneve"
-        network_interface: "bond0.1101"
-   - network:
-        group_binds:
-          - neutron_ovn_controller
-        container_bridge: "br-wan"
-        container_type: "veth"
-        type: "flat"
-        net_name: "public"
-        network_interface: "bond0.1002"
-   - network:
-       group_binds:
-         - neutron_ovn_controller
-       container_bridge: "br-vlan"
-       container_type: "veth"
-       type: "vlan"
-       net_name: "vlan"
-       range: "1120:1129"
-       network_interface: "bond0"
-shared-infra_hosts: &shared
+  provider_networks: "" 
+  neutron_provider_networks:
+    network_types: "geneve"
+    network_geneve_range: "1:10000"
+    network_vlan_ranges: "public,lbaas,vlan:1120:1129"
+    network_mappings: "public:br-wan,lbaas:br-lbaas,vlan:br-vlan"
+    network_interface_mappings: "br-wan:eth99,br-lbaas:bond0.1102,br-vlan:bond0"
+    #  provider_networks:
+    #   - network:
+    #        group_binds:
+    #          - neutron_ovn_controller
+    #        container_bridge: "br-gen"
+    #        container_type: "veth"
+    #        container_mtu: "9000"
+    #        ip_from_q: "tunnel"
+    #        type: "geneve"
+    #        range: "1:1000"
+    #        net_name: "geneve"
+    #        network_interface: "bond0.1101"
+    #   - network:
+    #        group_binds:
+    #          - neutron_ovn_controller
+    #        container_bridge: "br-wan"
+    #        container_type: "veth"
+    #        type: "flat"
+    #        net_name: "public"
+    #        network_interface: "eth99"
+    #   - network:
+    #       group_binds:
+    #         - neutron_ovn_controller
+    #       container_bridge: "br-vlan"
+    #       container_type: "veth"
+    #       type: "vlan"
+    #       net_name: "vlan"
+    #       range: "1120:1129"
+    #       network_interface: "bond0"
+    #   - network:
+    #       group_binds:
+    #         - neutron_ovn_controller
+    #         - octavia-worker
+    #         - octavia-housekeeping
+    #         - octavia-health-manager
+    #       container_bridge: "br-lbaas"
+    #       container_type: "veth"
+    #       type: "flat"
+    #       net_name: "lbaas"
+    #       network_interface: "bond0.1102"
+    #       container_interface: "br-lbaas"
+_infra_hosts: &infra
   infra-01:
     ip: 10.0.18.4
+    no_containers: true
   infra-02:
     ip: 10.0.18.5
+    no_containers: true
   infra-03:
     ip: 10.0.18.6
-repo-infra_hosts: *shared
-os-infra_hosts: *shared
-identity_hosts: *shared
-network_hosts: *shared
-storage-infra_hosts: *shared 
+    no_containers: true
+_compute_hosts: &compute
+  compute-01:
+    ip: 10.0.18.7
+  compute-02:
+    ip: 10.0.18.8
+  compute-03:
+    ip: 10.0.18.9
+  compute-04:
+    ip: 10.0.18.10
+infra_hosts: *infra
+shared-infra_hosts: *infra
+repo-infra_hosts: *infra
+octavia-infra_hosts: *infra
+magnum-infra_hosts: *infra
+compute_hosts: *compute
+os-infra_hosts: *infra
+identity_hosts: *infra
+#network_hosts: *infra
+dnsaas_hosts: *infra
+network-gateway_hosts: *compute
+network-northd_hosts: *infra
+storage-infra_hosts: *infra 
 storage_hosts:   
   infra-01:
     ip: 10.0.18.4
@@ -93,12 +134,4 @@ haproxy_hosts:
     ip: 10.0.18.2
   lb-02:
     ip: 10.0.18.3
-compute_hosts:
-  compute-01:
-    ip: 10.0.18.7
-#  compute-02:
-#    ip: 10.0.18.8
-#  compute-03:
-#    ip: 10.0.18.9
-  compute-04:
-    ip: 10.0.18.10
+coordination_hosts: *infra 

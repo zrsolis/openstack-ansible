@@ -2,12 +2,17 @@
 debug: false
 region: ZO-PNW
 install_method: source
-openstack_distrib_code_name: "Yoga"
+openstack_distrib_code_name: "Zed"
 dhcp_domain: cloud.zeroone.tech
 openstack_domain: cloud.zeroone.tech
 availability_zone: "ZO-PNW-LVW"
+service_region: "ZO-PNW"
 
-# Ceph config
+#################
+## Ceph Config ##
+#################
+ceph_pkg_source: distro
+ceph_stable_release: quincy
 ceph_conf_file: |
   [global]
   fsid = 919e214a-3306-11ed-9c01-83df3116c858 
@@ -15,7 +20,9 @@ ceph_conf_file: |
   mon_host = [v2:10.0.16.1:3300,v1:10.0.16.1:6789],[v2:10.0.16.2:3300,v1:10.0.16.2:6789],[v2:10.0.16.3:3300,v1:10.0.16.3:6789]
 ceph_keyrings_dir: "/etc/openstack_deploy/ceph-keyrings"
 
-# Rabbitmq config
+#####################  
+## Rabbitmq config ##
+#####################
 rabbitmq_use_ssl: true 
 rabbitmq_monitoring_userid: "zoadmin"
 rabbitmq_port_bindings:
@@ -24,7 +31,9 @@ rabbitmq_port_bindings:
   tcp_listeners:
     "0.0.0.0": 5672
 
-## HAProxy config
+####################
+## HAProxy config ##
+####################
 haproxy_keepalived_external_vip_cidr: "10.0.18.253/24"
 haproxy_keepalived_internal_vip_cidr: "{{internal_lb_vip_address}}/24"
 haproxy_keepalived_external_interface: br-mgmt
@@ -33,9 +42,9 @@ haproxy_keepalived_internal_interface: br-mgmt
 #haproxy_ssl_letsencrypt_enable: True
 #haproxy_ssl_letsencrypt_install_method: "distro"
 #haproxy_ssl_letsencrypt_email: "admin@zeroone.tech"
-haproxy_user_ssl_cert: "/etc/ssl/certs/zerooone.crt"
+haproxy_user_ssl_cert: "/etc/ssl/certs/zeroone.crt"
 haproxy_user_ssl_key: "/etc/ssl/private/zeroone.key"
-haproxy_user_ssl_ca_cert: "/etc/ssl/certs/zerooone_ca.crt"
+haproxy_user_ssl_ca_cert: "/etc/ssl/certs/zeroone_ca.crt"
 openstack_service_publicuri_proto: https
 haproxy_extra_services:
   - service:
@@ -47,8 +56,11 @@ haproxy_extra_services:
       haproxy_balance_type: http
       haproxy_backend_options:
         - "httpchk HEAD /"
+keepalived_package_state: "latest"
 
-## Cinder configs
+####################
+## Cinder configs ##
+####################
 cinder_service_region: "{{ region }}"
 cinder_ceph_client: "cinder"
 cinder_backends:
@@ -58,46 +70,70 @@ cinder_backends:
     rbd_ceph_conf: /etc/ceph/ceph.conf
     rbd_store_chunk_size: 8
     volume_backend_name: rbd
+    rbd_max_clone_depth: 5
+    rados_connect_timeout: -1
     rbd_user: "{{ cinder_ceph_client }}"
     rbd_secret_uuid: "{{ cinder_ceph_client_uuid }}"
-    report_discard_supported: true
+    report_discard_supported: True 
+    rbd_flatten_volume_from_snapshot: True
 cinder_backend_rbd_inuse: '{{ (cinder_backends|default("")|to_json).find("cinder.volume.drivers.rbd.RBDDriver") != -1 }}'
 cinder_active_active_cluster: "{{ cinder_backend_rbd_inuse }}"
 cinder_active_active_cluster_name: ceph
 cinder_storage_availability_zone: "{{ availability_zone }}"
 cinder_service_backup_program_enabled: True
-cinder_service_backup_driver: cinder.backup.drives.ceph.CephBackupDriver
+cinder_service_backup_driver: cinder.backup.drivers.ceph.CephBackupDriver
 cinder_service_backup_ceph_user: cinder-backup
 cinder_service_backup_ceph_pool: backups
 
-## Neutron config
+####################
+## Neutron config ##
+####################
 neutron_service_region: "{{ region }}"
 neutron_plugin_type: ml2.ovn
 neutron_plugin_base:
-  - neutron.services.ovn_l3.plugin.OVNL3RouterPlugin
-neutron_ml2_drivers_type: "flat,vlan,geneve"
+  - ovn-router
+  - metering
+neutron_ml2_drivers_type: "local,flat,vlan,geneve"
 neutron_neutron_conf_overrides:
   DEFAULT:
     l3_ha: False
-    default_availability_zones: "ZO-PNW-LKC"
+    default_availability_zones: "{{ availability_zone }}"
   agent:
     availability_zone: "{{ availability_zone }}"
+neutron_ovn_ssl: True
+global_overrides:
+  neutron_provider_networks:
+    network_types: "geneve"
+    network_geneve_range: "1:10000"
+    network_vlan_ranges: "public,lbaas,vlan:1120:1129"
+    network_mappings: "public:br-wan,lbaas:br-lbaas,vlan:br-vlan"
+    network_interface_mappings: "br-wan:eth99,br-lbaas:bond0.1102,br-blan:bond0"
 
-## horizon config
+
+####################
+## horizon config ##
+####################
 horizon_service_region: "{{ region }}"
 horizon_keystone_multidomain_support: True
 horizon_keystone_default_domain: Default
 horizon_enable_password_retrieve: True
 horizon_enable_ha_router: False
 horizon_default_dns_nameservers: ["1.1.1.1","8.8.8.8"]
+horizon_session_timeout: 3600
+horizon_enable_octavia_ui: True
+horizon_enable_magnum_ui: True
 
-## Keystone config
+#####################
+## Keystone config ##
+#####################
 keystone_service_region: "{{ region }}"
 keystone_conf_overrides:
   IDENTITY:
     domain_specific_drivers_enabled: True
 
-## Nova config
+#################      
+## Nova config ##
+#################
 nova_service_region: "{{ region }}"
 nova_ceph_client: "{{ cinder_ceph_client }}"
 nova_ceph_client_uuid: "{{ cinder_ceph_client_uuid }}"
@@ -113,35 +149,110 @@ nova_nova_conf_overrides:
   cinder:
     cross_az_attach: True
 nova_enabled_mdev_types:
-  - type: nvidia-662
+  - type: nvidia-594
 #    address: 0000:af:00.0
 
-## Glance config
+###################
+## Glance config ##
+###################
 glance_service_region: "{{ region }}"
 glance_default_store: rbd
 glance_rbd_store_pool: images
+glance_glance_api_conf_overrides:
+  taskflow_executor:
+    conversion_format: "raw"
 
-## Galera config 
+###################
+## Galera config ##
+###################
 galera_cluster_name: "os-galera-cluster"
 openrc_region_name: "{{ region }}"
 galera_max_connections: 1600
-galera_use_ssl: true
+galera_use_ssl: True
 
-## Placement config
+######################
+## Placement config ##
+######################
 placement_service_region: "{{ region }}"
 
-## Heat config
+#################
+## Heat config ##
+#################
 heat_service_region: "{{ region }}"
 
-## Octavia config
-octavia_service_region: "{{ region }}"
-octavia_management_net_subnet_allocation_pools: "172.30.0.3-172.31.255.254"
-octavia_provider_network_name: lbaas
 
+####################
+## Octavia config ##
+####################
+octavia_service_region: "{{ region }}"
+octavia_management_net_subnet_cidr: "172.31.0.0/16"
+octavia_management_net_subnet_allocation_pools: "172.31.1.0-172.31.3.255"
+octavia_management_net_dhcp: True
+octavia_service_net_setup: True
+octavia_provider_network_name: lbaas
+octavia_hm_hosts: "{% for host in groups[octavia_hm_group] %}{{ hostvars[host]['container_address'] }}{% if not loop.last %},{% endif %}{% endfor %}"
+octavia_amp_availability_zone: "{{ availability_zone}}"
+octavia_loadbalancer_topology: SINGLE
+octavia_amp_flavor_name: "z1.lb"
+### Disabling anti-affinity temporarily until new hosts can be added
+#octavia_enable_anti_affinity: True
+octavia_download_artefact: True
+octavia_ssh_enabled: True
+octavia_ssh_key_name: octavia
+octavia_amp_active_retries: 30
+octavia_cinder_enabled: True
+octavia_cinder_volume_type: "rbd"
+
+###################
+## Magnum config ##
+###################
+magnum_config_overrides:
+  cinder:
+    default_docker_volume_type: rbd
+
+######################
+## Designate config ##
+######################
+designate_pools_yaml:
+  - name: "default"
+    #    id: 3679ea8f-b934-4c0f-b24e-3bc08fbee1b0
+    description: "Bind9 Default Pool"
+    attributes: {}
+    ns_records:
+      - hostname: ns1.zeroone.tech.
+        priority: 1
+    nameservers:
+      - host: 10.0.18.4
+        port: 53
+    targets:
+      - type: bind9
+        description: "ns1.zeroone.tech bind9 server"
+        masters:
+          - host: 10.0.18.4
+            port: 5354
+          - host: 10.0.18.5
+            port: 5354
+          - host: 10.0.18.6 
+            port: 5354
+        options: 
+          host: 10.0.18.4
+          port: 53
+          rndc_host: 10.0.18.4
+          rndc_port: 953
+designate_rndc_keys:
+  - name: "designate"
+    file: /etc/designate/rndc.key
+    algorithm: "hmac-md5"
+    secret: "{{ designate_rndc_secret }}"
+
+
+###########################
+## Certificate Authority ##
+###########################
 openstack_pki_install_ca:
    - name: "ZORoot"
-openstack_pki_regen_ca: true
-openstack_pki_regen_cert: true
+openstack_pki_regen_ca: True
+openstack_pki_regen_cert: True
 openstack_pki_authorities:
    - name: "ZORoot"
      provider: selfsigned
@@ -174,4 +285,3 @@ openstack_pki_authorities:
      signed_by: "ZORoot"
 openstack_pki_service_intermediate_cert_name: "ZOIntermediate"
 
-     #openstack_pki_service_intermediate_cert_path: "{{ openstack_pki_dir ~ '/roots/' ~ openstack_pki_service_intermediate_cert_name ~ '/certs/' ~ openstack_pki_service_intermediate_cert_name ~ '.crt' }}"
