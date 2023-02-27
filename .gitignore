@@ -5,3 +5,6 @@
 /env.d
 /upgrade-zed
 /upper-constraints
+/ansible-facts
+openstack_inventory.json
+openstack_hostnames_ips.yml
