@@ -1,8 +1,0 @@
----
-cephrgwdummy_hosts:
-  ceph01:
-    ip: 10.0.18.128
-  ceph02:
-    ip: 10.0.18.129
-  ceph03:
-    ip: 10.0.18.130
