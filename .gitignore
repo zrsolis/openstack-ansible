@@ -1,3 +1,7 @@
 /pki
 /ssh_keypairs
 /ceph-keyrings
+/conf.d
+/env.d
+/upgrade-zed
+/upper-constraints
