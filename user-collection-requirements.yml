@@ -1,0 +1,7 @@
+---
+
+collections:
+- name: openstack.osa
+  source: https://opendev.org/openstack/openstack-ansible-plugins
+  type: git
+  version: e6ce7a42e1282d3b80f422feacf32f6301bbc6b1

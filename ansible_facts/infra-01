@@ -1,0 +1,305 @@
+{
+    "_ansible_facts_gathered": true,
+    "ansible_apparmor": {
+        "status": "enabled"
+    },
+    "ansible_architecture": "x86_64",
+    "ansible_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-5.15.0-91-generic",
+        "ro": true,
+        "root": "UUID=a4a53fe0-5f4c-4541-8c11-86ce9d7c2eb7"
+    },
+    "ansible_date_time": {
+        "date": "2024-01-09",
+        "day": "09",
+        "epoch": "1704788418",
+        "epoch_int": "1704788418",
+        "hour": "08",
+        "iso8601": "2024-01-09T08:20:18Z",
+        "iso8601_basic": "20240109T082018950113",
+        "iso8601_basic_short": "20240109T082018",
+        "iso8601_micro": "2024-01-09T08:20:18.950113Z",
+        "minute": "20",
+        "month": "01",
+        "second": "18",
+        "time": "08:20:18",
+        "tz": "UTC",
+        "tz_dst": "UTC",
+        "tz_offset": "+0000",
+        "weekday": "Tuesday",
+        "weekday_number": "2",
+        "weeknumber": "02",
+        "year": "2024"
+    },
+    "ansible_distribution": "Ubuntu",
+    "ansible_distribution_file_parsed": true,
+    "ansible_distribution_file_path": "/etc/os-release",
+    "ansible_distribution_file_variety": "Debian",
+    "ansible_distribution_major_version": "22",
+    "ansible_distribution_release": "jammy",
+    "ansible_distribution_version": "22.04",
+    "ansible_dns": {
+        "nameservers": [
+            "127.0.0.53"
+        ],
+        "options": {
+            "edns0": true,
+            "trust-ad": true
+        },
+        "search": [
+            "os.zeroone.tech",
+            "ceph.zeroone.tech",
+            "maas",
+            "svcs.zeroone.tech",
+            "zeroone.tech"
+        ]
+    },
+    "ansible_domain": "cloud.zeroone.tech",
+    "ansible_effective_group_id": 0,
+    "ansible_effective_user_id": 0,
+    "ansible_env": {
+        "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/0/bus",
+        "HOME": "/root",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LOGNAME": "root",
+        "MOTD_SHOWN": "pam",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
+        "PWD": "/root",
+        "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
+        "SHELL": "/bin/bash",
+        "SHLVL": "0",
+        "SSH_AUTH_SOCK": "/tmp/ssh-XXXX76DiCj/agent.2830209",
+        "SSH_CLIENT": "10.0.32.4 55228 22",
+        "SSH_CONNECTION": "10.0.32.4 55228 10.0.32.4 22",
+        "USER": "root",
+        "XDG_RUNTIME_DIR": "/run/user/0",
+        "XDG_SESSION_CLASS": "user",
+        "XDG_SESSION_ID": "13721",
+        "XDG_SESSION_TYPE": "tty",
+        "_": "/bin/sh"
+    },
+    "ansible_fips": false,
+    "ansible_fqdn": "infra-01.cloud.zeroone.tech",
+    "ansible_hostname": "infra-01",
+    "ansible_kernel": "5.15.0-91-generic",
+    "ansible_kernel_version": "#101-Ubuntu SMP Tue Nov 14 13:30:08 UTC 2023",
+    "ansible_local": {
+        "openstack_ansible": {
+            "cinder": {
+                "install_method": "source",
+                "need_online_data_migrations": "False",
+                "need_service_restart": "True",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "galera": {
+                "deployed": "True",
+                "initialized": "True"
+            },
+            "glance": {
+                "install_method": "source",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "heat": {
+                "install_method": "source",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "horizon": {
+                "install_method": "source",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "keystone": {
+                "install_method": "source",
+                "need_db_contract": "False",
+                "need_db_expand": "False",
+                "need_db_migrate": "False",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "magnum": {
+                "venv_tag": "27.0.1.dev2"
+            },
+            "neutron": {
+                "install_method": "source",
+                "need_db_contract": "True",
+                "need_db_expand": "False",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "nova": {
+                "install_method": "source",
+                "need_online_data_migrations": "False",
+                "need_service_restart": "True",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "octavia": {
+                "install_method": "source",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "placement": {
+                "install_method": "source",
+                "need_service_restart": "True",
+                "venv_tag": "27.0.1.dev2"
+            },
+            "uwsgi": {
+                "venv_tag": "27.0.1.dev2"
+            }
+        }
+    },
+    "ansible_lsb": {
+        "codename": "jammy",
+        "description": "Ubuntu 22.04.3 LTS",
+        "id": "Ubuntu",
+        "major_release": "22",
+        "release": "22.04"
+    },
+    "ansible_machine": "x86_64",
+    "ansible_machine_id": "393f28ff182e4b8f9e63d07da147c600",
+    "ansible_nodename": "infra-01",
+    "ansible_os_family": "Debian",
+    "ansible_pkg_mgr": "apt",
+    "ansible_proc_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-5.15.0-91-generic",
+        "ro": true,
+        "root": "UUID=a4a53fe0-5f4c-4541-8c11-86ce9d7c2eb7"
+    },
+    "ansible_processor": [
+        "0",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "1",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "2",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "3",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "4",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "5",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "6",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "7",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "8",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "9",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "10",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "11",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "12",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "13",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "14",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz",
+        "15",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz"
+    ],
+    "ansible_processor_cores": 8,
+    "ansible_processor_count": 1,
+    "ansible_processor_nproc": 16,
+    "ansible_processor_threads_per_core": 2,
+    "ansible_processor_vcpus": 16,
+    "ansible_python": {
+        "executable": "/usr/bin/python3",
+        "has_sslcontext": true,
+        "type": "cpython",
+        "version": {
+            "major": 3,
+            "micro": 12,
+            "minor": 10,
+            "releaselevel": "final",
+            "serial": 0
+        },
+        "version_info": [
+            3,
+            10,
+            12,
+            "final",
+            0
+        ]
+    },
+    "ansible_python_version": "3.10.12",
+    "ansible_real_group_id": 0,
+    "ansible_real_user_id": 0,
+    "ansible_selinux": {
+        "status": "disabled"
+    },
+    "ansible_selinux_python_present": true,
+    "ansible_service_mgr": "systemd",
+    "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAKSEj7amu/vzp+AdJYCbUt5lnN4WWU8o7o6U+DlpCVvNPDJePlvFhz07INUatD3b64ksd0xZ1++3znULYpJcNijibbfzsAuvg0foK85CNfHliFZjzwJ7G5Psah69L0XnMKnG9hzKPOaclv+I7kf/jDXfpRXVc4MkdUrJLwr2dow5AAAAFQCmddDXlvhhyyrzP7O9+WrJ45THdQAAAIEAkqupwX4zeZrFCUjENHz4AZGA7syeoLkFfeqMjnwcLtOiEJKl4fhQPxan2F28xpWHanBQg+DDNDNpARXW1Gj4MoYiMbznPZHcevhNoxGrf9qzLkqgN6o2uT3A3CvyQbEn0uJdbnIzPmEJkA1Vhm2XYg4YgQakODBckqMm5fh7nfsAAACBAJHyE6W75Ezab4XSQx8dk/ecjuE+UjOBs3WXXe+CxvWwwkYhlGfiGGSygNtTH+q+QxXss3GsX/X2XrfD2rkhmABOu5tXEgkoINVAt8n87KxBhMJjR8sw94QaiOD7xs2WkoPkHn7+8cqmzLEYasLMS4dtTeuCiyGhJfsE0LSMnMvh",
+    "ansible_ssh_host_key_dsa_public_keytype": "ssh-dss",
+    "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPjWB0ZacRgai90DYxotMAi30/i4TluFSOootRWwmu7bLcmJfn0p5xHwWCr1cBNzuglknq1zMyJXrPYpT+kuYYE=",
+    "ansible_ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256",
+    "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIPEUG0AZp7AlxCE0vUv2CSGEimCCbt1umIG/MHhYslaZ",
+    "ansible_ssh_host_key_ed25519_public_keytype": "ssh-ed25519",
+    "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQDCwLUrF0RIvFXHxdM50wVZlJd6o0KsWxS+H005iDfzJ1JFakiJMMdofDaoqQoRZQBHIhuxgM4pn1F8oXvtZpuIw40Dfooh38D6exrUXS8zTTXex9epougAeXUH8P5NVXfRPqm3tayeKnRyybt91NYPLU7QZ0TQIJzli61Eg8TRDPgvePCprjeO/aYBp+4BUJQmpPUaxcoZIXRiYFgRFcYz61VzEG+gBeE39veYdL7dRCA5Iz479yFLv99Pi5GNeSj17Z5vgpfYpY0uY/8JB+jJKW32k6GEgbiQL2gCYInVghk5Vkz9qG11QOgGdZQ3b/0bLfQLxiaPiIBrobuJaOCHcCTcO8+GtVL7MJSyJhBSnBGnZw4rlI0V+kQIJehFbUvk2pj6CSBikSIL8zFFMtzjqijqoNRdN+wDsDwJfdGRgZSXbqXWTYNlzZ9xMZNpBwevxsx6V6/yPTxkSDIITwLannFoek0yzGp3vNNXEFiv/W1uzrGkwnYYtda2fpUbdq0=",
+    "ansible_ssh_host_key_rsa_public_keytype": "ssh-rsa",
+    "ansible_system": "Linux",
+    "ansible_system_capabilities": [],
+    "ansible_system_capabilities_enforced": "False",
+    "ansible_user_dir": "/root",
+    "ansible_user_gecos": "root",
+    "ansible_user_gid": 0,
+    "ansible_user_id": "root",
+    "ansible_user_shell": "/bin/bash",
+    "ansible_user_uid": 0,
+    "ansible_userspace_architecture": "x86_64",
+    "ansible_userspace_bits": "64",
+    "discovered_interpreter_python": "/usr/bin/python3",
+    "gather_subset": [
+        "!all:min"
+    ],
+    "glusterfs": {
+        "peers": {
+            "infra-02": [
+                "70ff9225-3001-42ea-9b2b-c91737e9c9a2",
+                "Peer in Cluster (Connected)"
+            ],
+            "infra-03": [
+                "63e28d20-82db-45e0-8492-5595c91f9b3f",
+                "Peer in Cluster (Connected)"
+            ]
+        },
+        "quotas": {},
+        "volumes": {
+            "gfs-repo": {
+                "bricks": [
+                    "infra-01:/gluster/bricks/1",
+                    "infra-02:/gluster/bricks/1",
+                    "infra-03:/gluster/bricks/1"
+                ],
+                "id": "3dd04472-a2fc-4293-b3fe-d66765c362f9",
+                "name": "gfs-repo",
+                "options": {
+                    "cluster.granular-entry-heal": "on",
+                    "nfs.disable": "on",
+                    "performance.client-io-threads": "off",
+                    "storage.fips-mode-rchecksum": "on",
+                    "transport.address-family": "inet"
+                },
+                "quota": false,
+                "replicas": "3",
+                "status": "Started",
+                "transport": "tcp"
+            }
+        }
+    },
+    "module_setup": true
+}

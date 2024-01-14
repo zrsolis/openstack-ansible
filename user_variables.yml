@@ -16,8 +16,8 @@ ceph_stable_release: quincy
 ceph_conf_file: |
   [global]
   fsid = 919e214a-3306-11ed-9c01-83df3116c858 
-  mon_initial_members = ceph01,ceph02,ceph03
-  mon_host = [v2:10.0.16.1:3300,v1:10.0.16.1:6789],[v2:10.0.16.2:3300,v1:10.0.16.2:6789],[v2:10.0.16.3:3300,v1:10.0.16.3:6789]
+  mon_initial_members = ceph-01,ceph-02,ceph-03,ceph-04,ceph-05
+  mon_host = [v2:10.0.16.1:3300,v1:10.0.16.1:6789],[v2:10.0.16.2:3300,v1:10.0.16.2:6789],[v2:10.0.16.3:3300,v1:10.0.16.3:6789],[v2:10.0.16.4:3300,v1:10.0.16.4:6789],[v2:10.0.16.5:3300,v1:10.0.16.5:6789]
 ceph_keyrings_dir: "/etc/openstack_deploy/ceph-keyrings"
 
 #####################  
@@ -34,17 +34,17 @@ rabbitmq_port_bindings:
 ####################
 ## HAProxy config ##
 ####################
-haproxy_keepalived_external_vip_cidr: "10.0.18.253/24"
-haproxy_keepalived_internal_vip_cidr: "{{internal_lb_vip_address}}/24"
+haproxy_keepalived_external_vip_cidr: "10.0.47.253/20"
+haproxy_keepalived_internal_vip_cidr: "{{internal_lb_vip_address}}/20"
 haproxy_keepalived_external_interface: br-mgmt
 haproxy_keepalived_internal_interface: br-mgmt
 #haproxy_ssl: True
 #haproxy_ssl_letsencrypt_enable: True
 #haproxy_ssl_letsencrypt_install_method: "distro"
 #haproxy_ssl_letsencrypt_email: "admin@zeroone.tech"
-haproxy_user_ssl_cert: "/etc/ssl/certs/zeroone.crt"
+haproxy_user_ssl_cert: "/etc/ssl/certs/zeroone.pem"
 haproxy_user_ssl_key: "/etc/ssl/private/zeroone.key"
-haproxy_user_ssl_ca_cert: "/etc/ssl/certs/zeroone_ca.crt"
+haproxy_user_ssl_ca_cert: "/etc/ssl/certs/zeroone_ca.pem"
 openstack_service_publicuri_proto: https
 haproxy_extra_services:
   - service:
@@ -83,7 +83,7 @@ cinder_storage_availability_zone: "{{ availability_zone }}"
 cinder_service_backup_program_enabled: True
 cinder_service_backup_driver: cinder.backup.drivers.ceph.CephBackupDriver
 cinder_service_backup_ceph_user: cinder-backup
-cinder_service_backup_ceph_pool: backups
+cinder_service_backup_ceph_pool: backups_slow
 
 ####################
 ## Neutron config ##
@@ -93,7 +93,7 @@ neutron_plugin_type: ml2.ovn
 neutron_plugin_base:
   - ovn-router
   - metering
-neutron_ml2_drivers_type: "local,flat,vlan,geneve"
+neutron_ml2_drivers_type: "flat,geneve,vlan"
 neutron_neutron_conf_overrides:
   DEFAULT:
     l3_ha: False
@@ -134,6 +134,7 @@ keystone_conf_overrides:
 #################      
 ## Nova config ##
 #################
+nova_virt_type: kvm 
 nova_service_region: "{{ region }}"
 nova_ceph_client: "{{ cinder_ceph_client }}"
 nova_ceph_client_uuid: "{{ cinder_ceph_client_uuid }}"
@@ -151,6 +152,10 @@ nova_nova_conf_overrides:
 nova_enabled_mdev_types:
   - type: nvidia-594
 #    address: 0000:af:00.0
+nova_scheduler_extra_filters:
+  - AvailabilityZoneFilter
+  - AggregateInstanceExtraSpecsFilter
+
 
 ###################
 ## Glance config ##
@@ -189,10 +194,10 @@ octavia_management_net_subnet_cidr: "172.31.0.0/16"
 octavia_management_net_subnet_allocation_pools: "172.31.1.0-172.31.3.255"
 octavia_management_net_dhcp: True
 octavia_service_net_setup: True
-octavia_provider_network_name: lbaas
+octavia_provider_network_name: "lbaas"
 octavia_hm_hosts: "{% for host in groups[octavia_hm_group] %}{{ hostvars[host]['container_address'] }}{% if not loop.last %},{% endif %}{% endfor %}"
-octavia_amp_availability_zone: "{{ availability_zone}}"
-octavia_loadbalancer_topology: SINGLE
+octavia_amp_availability_zone: "{{ availability_zone }}"
+octavia_loadbalancer_topology: "SINGLE"
 octavia_amp_flavor_name: "z1.lb"
 ### Disabling anti-affinity temporarily until new hosts can be added
 #octavia_enable_anti_affinity: True
@@ -202,6 +207,7 @@ octavia_ssh_key_name: octavia
 octavia_amp_active_retries: 30
 octavia_cinder_enabled: True
 octavia_cinder_volume_type: "rbd"
+octavia_ip_tables_fw: False
 
 ###################
 ## Magnum config ##
@@ -222,22 +228,22 @@ designate_pools_yaml:
       - hostname: ns1.zeroone.tech.
         priority: 1
     nameservers:
-      - host: 10.0.18.4
+      - host: 10.0.32.4
         port: 53
     targets:
       - type: bind9
         description: "ns1.zeroone.tech bind9 server"
         masters:
-          - host: 10.0.18.4
+          - host: 10.0.32.4
             port: 5354
-          - host: 10.0.18.5
+          - host: 10.0.32.5
             port: 5354
-          - host: 10.0.18.6 
+          - host: 10.0.32.6 
             port: 5354
         options: 
-          host: 10.0.18.4
+          host: 10.0.32.4
           port: 53
-          rndc_host: 10.0.18.4
+          rndc_host: 10.0.32.4
           rndc_port: 953
 designate_rndc_keys:
   - name: "designate"

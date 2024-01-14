@@ -1,0 +1,157 @@
+{
+    "_ansible_facts_gathered": true,
+    "ansible_apparmor": {
+        "status": "enabled"
+    },
+    "ansible_architecture": "x86_64",
+    "ansible_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-5.15.0-91-generic",
+        "ro": true,
+        "root": "UUID=b0487777-2a5c-4b6b-bd9c-ba60c0a40fd6"
+    },
+    "ansible_date_time": {
+        "date": "2024-01-09",
+        "day": "09",
+        "epoch": "1704786260",
+        "epoch_int": "1704786260",
+        "hour": "07",
+        "iso8601": "2024-01-09T07:44:20Z",
+        "iso8601_basic": "20240109T074420159140",
+        "iso8601_basic_short": "20240109T074420",
+        "iso8601_micro": "2024-01-09T07:44:20.159140Z",
+        "minute": "44",
+        "month": "01",
+        "second": "20",
+        "time": "07:44:20",
+        "tz": "UTC",
+        "tz_dst": "UTC",
+        "tz_offset": "+0000",
+        "weekday": "Tuesday",
+        "weekday_number": "2",
+        "weeknumber": "02",
+        "year": "2024"
+    },
+    "ansible_distribution": "Ubuntu",
+    "ansible_distribution_file_parsed": true,
+    "ansible_distribution_file_path": "/etc/os-release",
+    "ansible_distribution_file_variety": "Debian",
+    "ansible_distribution_major_version": "22",
+    "ansible_distribution_release": "jammy",
+    "ansible_distribution_version": "22.04",
+    "ansible_dns": {
+        "nameservers": [
+            "127.0.0.53"
+        ],
+        "options": {
+            "edns0": true,
+            "trust-ad": true
+        },
+        "search": [
+            "os.zeroone.tech",
+            "ceph.zeroone.tech",
+            "maas",
+            "svcs.zeroone.tech",
+            "zeroone.tech"
+        ]
+    },
+    "ansible_domain": "cloud.zeroone.tech",
+    "ansible_effective_group_id": 0,
+    "ansible_effective_user_id": 0,
+    "ansible_env": {
+        "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/0/bus",
+        "HOME": "/root",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LOGNAME": "root",
+        "MOTD_SHOWN": "pam",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
+        "PWD": "/root",
+        "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
+        "SHELL": "/bin/bash",
+        "SHLVL": "0",
+        "SSH_AUTH_SOCK": "/tmp/ssh-XXXXYSL1nA/agent.959919",
+        "SSH_CLIENT": "10.0.32.4 56960 22",
+        "SSH_CONNECTION": "10.0.32.4 56960 10.0.32.2 22",
+        "USER": "root",
+        "XDG_RUNTIME_DIR": "/run/user/0",
+        "XDG_SESSION_CLASS": "user",
+        "XDG_SESSION_ID": "13679",
+        "XDG_SESSION_TYPE": "tty",
+        "_": "/bin/sh"
+    },
+    "ansible_fips": false,
+    "ansible_fqdn": "lb-01.cloud.zeroone.tech",
+    "ansible_hostname": "lb-01",
+    "ansible_kernel": "5.15.0-91-generic",
+    "ansible_kernel_version": "#101-Ubuntu SMP Tue Nov 14 13:30:08 UTC 2023",
+    "ansible_local": {},
+    "ansible_lsb": {
+        "codename": "jammy",
+        "description": "Ubuntu 22.04.3 LTS",
+        "id": "Ubuntu",
+        "major_release": "22",
+        "release": "22.04"
+    },
+    "ansible_machine": "x86_64",
+    "ansible_machine_id": "bde44a79d3464664a063b60437bbdabf",
+    "ansible_nodename": "lb-01",
+    "ansible_os_family": "Debian",
+    "ansible_pkg_mgr": "apt",
+    "ansible_proc_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-5.15.0-91-generic",
+        "ro": true,
+        "root": "UUID=b0487777-2a5c-4b6b-bd9c-ba60c0a40fd6"
+    },
+    "ansible_python": {
+        "executable": "/usr/bin/python3",
+        "has_sslcontext": true,
+        "type": "cpython",
+        "version": {
+            "major": 3,
+            "micro": 12,
+            "minor": 10,
+            "releaselevel": "final",
+            "serial": 0
+        },
+        "version_info": [
+            3,
+            10,
+            12,
+            "final",
+            0
+        ]
+    },
+    "ansible_python_version": "3.10.12",
+    "ansible_real_group_id": 0,
+    "ansible_real_user_id": 0,
+    "ansible_selinux": {
+        "status": "disabled"
+    },
+    "ansible_selinux_python_present": true,
+    "ansible_service_mgr": "systemd",
+    "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAM+bqo3nn5yBE5m/rOmlkpPwPSJ7FXRao1RUcc1xiXTMAUIWxdGGYwNJgrtZ0Rh5jPQpa6QbYjvUjGOzl8Yj3KHmyXoYZ8SRDdsyCdFPlQUhUGbGdU80Pn0ElXOO/4R+h7xNykirtFm2ElWpUpcL0r5QqJqKYh5yDWAuCOIcEinHAAAAFQCsguUSzL8vtbrECD5Cv0ibgk9KywAAAIBFjuqQ+haFRMssmfktC8hvhAy8yrQpJLTpyD6QC8Pt0NJ3PI1xomvf9iGG6vwNRVvNy1DasAoJsgRBeNsv3WzsvKF/0EBSIbduxpZojy0resEn7TACbSfkXoQnCWojQbZitYkyEaREIvuhEdL7CB1FV+MNLJj/Q9XUXTF5XzxgjQAAAIA87h8S8lOkVG5qH1wH2KjtlhYkrh8lBxGXOoR5Uy46UFp9tcMTmzkX3ENFOcsBtFDEWijxsTl83b3/oLilGO8FH+Pl7hRSENf8tRb7zUqPWzSSv+Jiov3rYZ7onX4KQVqGfvnJWL2u67dd0zM3pjWzZYy9s4oSthnfX/Yox6W2dw==",
+    "ansible_ssh_host_key_dsa_public_keytype": "ssh-dss",
+    "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP6ybfyoqAbdbskeh04wVlboKbyNN1btj1+pBefKoG7JD+9gDvBDxNCxdJh3eN0XdgNAqBMa/5lTan7D3tTf3hg=",
+    "ansible_ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256",
+    "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIOxUmNetymn7ZjlWRMEYeivOZs3LmI3QUn0tbbHF1x5m",
+    "ansible_ssh_host_key_ed25519_public_keytype": "ssh-ed25519",
+    "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQCkoWgIIM6nf6FDwCbbV/UAv9DIosKLL3kvBtN4ngaLcHGs4bpezUdy0Zu4x01NjRAqUbAVc5cDYSzruyrfBSNOVJHsgQXJp7kSC5Sq/9wcyRfaSTCAGSqxIE8OsMLOOr35/BNB4p5IoCOlgguesQna/YmMeIXItLnJ8VZSL732liohDAXGSpXQR/OiFPbQYtk/O8rm+iRTD5/tADVopG6eGC4pbjYM3uUo+VOw7jsMvcsD5ZaqqhVj2qIDw0b1Ox28tSA1KN9x4S0xBzciO+OnkR1iwrhxA1+PS6dvdb0ceCDhuglFb4PYcs89eLpCF2fzlCRuSzcuVlEMvdBeQAHeNiP4byO4LP4niaH4AuCPecUClcD/P6QHpAW88rB7A/p/VflRWEdlPmXHavp2q9iDqFon4AgrezywinSyeQvVfx0fVVe4uUmsnwZVgCpiC2JySCOsa7sSPKhTfq1jKhxvjIdgBmPpxw8UaWIqzlQoVjFG+ZyWapsTLPu7/1Zvtas=",
+    "ansible_ssh_host_key_rsa_public_keytype": "ssh-rsa",
+    "ansible_system": "Linux",
+    "ansible_system_capabilities": [],
+    "ansible_system_capabilities_enforced": "False",
+    "ansible_user_dir": "/root",
+    "ansible_user_gecos": "root",
+    "ansible_user_gid": 0,
+    "ansible_user_id": "root",
+    "ansible_user_shell": "/bin/bash",
+    "ansible_user_uid": 0,
+    "ansible_userspace_architecture": "x86_64",
+    "ansible_userspace_bits": "64",
+    "discovered_interpreter_python": "/usr/bin/python3",
+    "gather_subset": [
+        "!all",
+        "min"
+    ],
+    "module_setup": true
+}
