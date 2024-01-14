@@ -8,3 +8,4 @@
 /ansible-facts
 openstack_inventory.json
 openstack_hostnames_ips.yml
+user_secrets.yml
