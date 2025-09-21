@@ -1,0 +1,5 @@
+---
+container_networks:
+  management_address:
+    address: "{{ management_address }}"
+    netmask: 255.255.240.0

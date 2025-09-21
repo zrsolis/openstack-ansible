@@ -2,12 +2,12 @@ cidr_networks:
   container: 10.0.32.0/20
   tunnel: 10.0.19.0/24
   storage: 10.0.16.0/24
-  lbaas: 172.17.0.0/16
+  lbaas: 172.30.0.0/16
 used_ips:
   - "10.0.19.1,10.0.19.50"
   - "10.0.18.1,10.0.18.50"
   - "10.0.16.1,10.0.16.50"
-  - "172.31.1.0,172.31.3.255" 
+  - "172.30.1.0,172.30.3.255" 
 global_overrides:
   internal_lb_vip_address: 10.0.47.254
   external_lb_vip_address: cloud.zeroone.tech
@@ -16,9 +16,9 @@ global_overrides:
   neutron_provider_networks:
     network_types: "geneve"
     network_geneve_ranges: "1:10000"
-    network_vlan_ranges: "public,lbaas,vlan:1120:1129"
+    network_vlan_ranges: "public,lbaas,vlan:1120:1129,vlan:3000:3001,vlan:4001:4001"
     network_mappings: "public:br-wan,lbaas:br-lbaas,vlan:br-vlan"
-    network_interface_mappings: "br-wan:eth99,br-lbaas:bond0.1102,br-vlan:bond0"
+    network_interface_mappings: "br-wan:bond0.4000,br-lbaas:bond0.1102,br-vlan:bond0"
     #  provider_networks:
     #   - network:
     #        group_binds:
@@ -60,29 +60,158 @@ global_overrides:
     #       net_name: "lbaas"
     #       network_interface: "bond0.1102"
     #       container_interface: "br-lbaas"
+_zun_hosts: &zun
+  m710x-c1n1:
+    management_ip: 10.0.13.18
+    ip: 10.0.33.0
+  m710x-c2n1:
+    management_ip: 10.0.13.19
+    ip: 10.0.33.1
+  m710x-c3n1:
+    management_ip: 10.0.13.20
+    ip: 10.0.33.2
 _infra_hosts: &infra
   infra-01:
+    management_ip: 10.0.13.10
     ip: 10.0.32.4
     no_containers: true
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          #          internal_service_availability_zone: "{{ availability_zone }}"
+          default_availability_zone: "{{ availability_zone }}"
+          default_schedule_zone: "{{ availability_zone }}"
+        cinder:
+          cross_az_attach: True
   infra-02:
+    management_ip: 10.0.13.11
     ip: 10.0.32.5
     no_containers: true
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          #        internal_service_availability_zone: "{{ availability_zone }}"
+        default_availability_zone: "{{ availability_zone }}"
+        default_schedule_zone: "{{ availability_zone }}"
+      cinder:
+        cross_az_attach: True
   infra-03:
+    management_ip: 10.0.13.12
     ip: 10.0.32.6
     no_containers: true
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          #          internal_service_availability_zone: "{{ availability_zone }}"
+          default_availability_zone: "{{ availability_zone }}"
+          default_schedule_zone: "{{ availability_zone }}"
+        cinder:
+          cross_az_attach: True
 _compute_hosts: &compute
-  compute-01:
-    ip: 10.0.32.7
-  compute-02:
+  #  compute-01:
+  #    ip: 10.0.32.7
+  #    host_vars: 
+  #      nova_nova_conf_overrides:
+  #        DEFAULT:
+  #          internal_service_availability_zone: "{{ availability_zone }}"
+  #          default_availability_zone: "{{ availability_zone }}"
+  #          default_schedule_zone: "{{ availability_zone }}"
+  #        cinder:
+  #          cross_az_attach: True
+  #  compute-02:
+  #    ip: 10.0.32.8
+  #    host_vars:
+  #      nova_nova_conf_overrides:
+  #        DEFAULT:
+  #          internal_service_availability_zone: "{{ availability_zone }}"
+  #          default_availability_zone: "{{ availability_zone }}"
+  #          default_schedule_zone: "{{ availability_zone }}"
+  #        cinder:
+  #          cross_az_attach: True
+  #        libvirt:
+  #          cpu_mode: custom
+  #          cpu_models: Skylake-Server-noTSX-IBRS
+  #  compute-03:
+  #    ip: 10.0.32.9
+  #    host_vars:
+  #      nova_nova_conf_overrides:
+  #        DEFAULT:
+  #          internal_service_availability_zone: "{{ availability_zone }}"
+  #          default_availability_zone: "{{ availability_zone }}"
+  #          default_schedule_zone: "{{ availability_zone }}"
+  #        cinder:
+  #          cross_az_attach: True  
+  #        libvirt:
+  #          cpu_mode: custom
+  #          cpu_models: Skylake-Server-noTSX-IBRS
+  #  compute-04:
+  #    ip: 10.0.32.10
+  # lvw-380g10-comp5:
+  #   ip: 10.0.32.11
+  #   host_vars:
+  #     nova_nova_conf_overrides:
+  #       DEFAULT:
+  #         internal_service_availability_zone: "{{ availability_zone }}"
+  #         default_availability_zone: "{{ availability_zone }}"
+  #         default_schedule_zone: "{{ availability_zone }}"
+  #       cinder:
+  #         cross_az_attach: True
+  #       libvirt:
+  #         cpu_mode: custom
+  #         cpu_models: Skylake-Server-noTSX-IBRS
+  lvw-380g10-comp2:
+    management_ip: 10.0.13.14
     ip: 10.0.32.8
-  compute-03:
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          internal_service_availability_zone: "{{ availability_zone }}"
+          default_availability_zone: "{{ availability_zone }}"
+          default_schedule_zone: "{{ availability_zone }}"
+        cinder:
+          cross_az_attach: True
+        libvirt:
+          cpu_mode: custom
+          cpu_models: Skylake-Server-noTSX-IBRS
+  lvw-380g10-comp3:
+    management_ip: 10.0.13.15
     ip: 10.0.32.9
-  compute-04:
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          default_availability_zone: "{{ availability_zone }}"
+          default_schedule_zone: "{{ availability_zone }}"
+        cinder:
+          cross_az_attach: True
+        libvirt:
+          cpu_mode: custom
+          cpu_models: Skylake-Server-noTSX-IBRS
+  lvw-380g10-comp4:
+    management_ip: 10.0.13.16
     ip: 10.0.32.10
-  compute-mc-01:
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          default_availability_zone: "{{ availability_zone }}"
+          default_schedule_zone: "{{ availability_zone }}"
+        cinder:
+          cross_az_attach: True
+        libvirt:
+          cpu_mode: custom
+          cpu_models: Skylake-Server-noTSX-IBRS
+  lvw-380g10-comp5:
+    management_ip: 10.0.13.17
     ip: 10.0.32.11
-  compute-mc-02:
-    ip: 10.0.32.12
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          default_availability_zone: "{{ availability_zone }}"
+          default_schedule_zone: "{{ availability_zone }}"
+        cinder:
+          cross_az_attach: True
+        libvirt:
+          cpu_mode: custom
+          cpu_models: Skylake-Server-noTSX-IBRS
 infra_hosts: *infra
 shared-infra_hosts: *infra
 repo-infra_hosts: *infra
@@ -92,12 +221,20 @@ compute_hosts: *compute
 os-infra_hosts: *infra
 identity_hosts: *infra
 network_hosts: *infra
-dnsaas_hosts: *infra
+#dnsaas_hosts: *infra
+coordination_hosts: *infra
+metrics_hosts: *infra
+metering-compute_hosts: *compute
+metering-infra_hosts: *infra
 network-gateway_hosts: *compute
 network-northd_hosts: *infra
 storage-infra_hosts: *infra 
+zun-compute_hosts: *zun
+zun-infra_hosts: *infra
+skyline_dashboard_hosts: *infra
 storage_hosts:   
   infra-01:
+    management_ip: 10.0.13.10
     ip: 10.0.32.4
     cinder_backends:
       rbd:
@@ -110,6 +247,7 @@ storage_hosts:
         rbd_secret_uuid: "{{ cinder_ceph_client_uuid }}"
         report_discard_supported: true
   infra-02:
+    management_ip: 10.0.13.11
     ip: 10.0.32.5
     cinder_backends:
       rbd:
@@ -122,6 +260,7 @@ storage_hosts:
         rbd_secret_uuid: "{{ cinder_ceph_client_uuid }}"
         report_discard_supported: true
   infra-03:
+    management_ip: 10.0.13.12
     ip: 10.0.32.6
     cinder_backends:
       rbd:
@@ -138,4 +277,3 @@ haproxy_hosts:
     ip: 10.0.32.2
   lb-02:
     ip: 10.0.32.3
-coordination_hosts: *infra 

@@ -1,0 +1,17 @@
+hosts
+localhost
+lvw-380g10-comp2
+lvw-380g10-comp3
+lvw-380g10-comp4
+lvw-380g10-comp5
+infra-01
+infra-02
+infra-03
+m710x-c1n1
+m710x-c2n1
+m710x-c3n1
+ceph-06
+ceph-07
+ceph-08
+lb-02
+lb-01
