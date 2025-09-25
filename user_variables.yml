@@ -105,8 +105,8 @@ neutron_ml2_drivers_type: "flat,geneve,vlan"
 neutron_availability_zone: "{{ availability_zone }}"
 neutron_default_availability_zones: ["{{ availability_zone }}"]
 neutron_ovn_ssl: True
-neutron_agent_down_time: 9999
-neutron_use_uwsgi: False
+  #neutron_agent_down_time: 9999
+neutron_use_uwsgi: True
 neutron_quota_floatingip: 1
 neutron_quota_network: 1
 neutron_quota_router: 1
