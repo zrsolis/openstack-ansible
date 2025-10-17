@@ -179,6 +179,7 @@ nova_cinder_rbd_inuse: True
 nova_scheduler_extra_filters:
   #  - AvailabilityZoneFilter
   - AggregateInstanceExtraSpecsFilter
+  - PciPassthroughFilter
 nova_console_type: novnc
 nova_qemu_vnc_tls: 0
 nova_libvirtd_listen_tls: 0
