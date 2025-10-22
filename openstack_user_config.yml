@@ -222,10 +222,8 @@ _compute_hosts: &compute
           default_schedule_zone: "{{ availability_zone  }}"
         cinder:
           cross_az_attach: True
-      nova_device_spec:
-        - '{"vendor_id":"10de", "product_id":"27b2"}'
-      nova_pci_alias:
-        - '{"vendor_id":"10de", "product_id":"27b2", "device_type": "type-PCI", "name":"4000Ada"}'
+        pci:
+          report_in_placement: True
 infra_hosts: *infra
 shared-infra_hosts: *infra
 repo-infra_hosts: *infra

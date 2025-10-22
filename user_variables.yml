@@ -166,7 +166,9 @@ nova_libvirt_hw_disk_discard: 'unmap'
 nova_libvirt_disk_cachemodes: 'network=writeback'
 nova_libvirt_images_rbd_pool: 'vms'
 nova_cinder_rbd_inuse: True
-  #nova_nova_conf_overrides:
+nova_nova_conf_overrides:
+  pci:
+    report_in_placement: True
   #  DEFAULT:
   #    internal_service_availability_zone: "{{ availability_zone }}"
   #    default_availability_zone: "{{ availability_zone }}"
@@ -184,6 +186,10 @@ nova_console_type: novnc
 nova_qemu_vnc_tls: 0
 nova_libvirtd_listen_tls: 0
 nova_libvirtd_listen_tcp: 1
+nova_device_spec:
+  - '{"vendor_id":"10de", "product_id":"27b2"}'
+nova_pci_alias:
+  - '{"vendor_id":"10de", "product_id":"27b2", "device_type": "type-PCI", "name":"4000Ada"}'
 
 ###################
 ## Glance config ##
