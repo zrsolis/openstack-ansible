@@ -1,37 +1,36 @@
 {
-    "_ansible_facts_gathered": true,
     "ansible_apparmor": {
         "status": "enabled"
     },
     "ansible_architecture": "x86_64",
     "ansible_cmdline": {
-        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-33-generic",
+        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-36-generic",
         "amd_iommu": "on",
         "kvm.ignore_msrs": "1",
         "ro": true,
         "root": "UUID=c0e1ec9a-5796-4b83-a89c-30b4c7c2d3cc",
-        "vfio_pci.ids": "10de:27b2"
+        "vfio_pci.ids": "10de:27b2,10de:22bc"
     },
     "ansible_date_time": {
-        "date": "2025-10-17",
-        "day": "17",
-        "epoch": "1760685304",
-        "epoch_int": "1760685304",
-        "hour": "07",
-        "iso8601": "2025-10-17T07:15:04Z",
-        "iso8601_basic": "20251017T071504702517",
-        "iso8601_basic_short": "20251017T071504",
-        "iso8601_micro": "2025-10-17T07:15:04.702517Z",
-        "minute": "15",
-        "month": "10",
-        "second": "04",
-        "time": "07:15:04",
+        "date": "2025-12-01",
+        "day": "01",
+        "epoch": "1764554090",
+        "epoch_int": "1764554090",
+        "hour": "01",
+        "iso8601": "2025-12-01T01:54:50Z",
+        "iso8601_basic": "20251201T015450713321",
+        "iso8601_basic_short": "20251201T015450",
+        "iso8601_micro": "2025-12-01T01:54:50.713321Z",
+        "minute": "54",
+        "month": "12",
+        "second": "50",
+        "time": "01:54:50",
         "tz": "UTC",
         "tz_dst": "UTC",
         "tz_offset": "+0000",
-        "weekday": "Friday",
-        "weekday_number": "5",
-        "weeknumber": "41",
+        "weekday": "Monday",
+        "weekday_number": "1",
+        "weeknumber": "48",
         "year": "2025"
     },
     "ansible_distribution": "Ubuntu",
@@ -72,21 +71,21 @@
         "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
         "SHELL": "/bin/bash",
         "SHLVL": "0",
-        "SSH_AUTH_SOCK": "/tmp/ssh-ZVOU7ceNRO/agent.80669",
-        "SSH_CLIENT": "10.0.32.4 60004 22",
-        "SSH_CONNECTION": "10.0.32.4 60004 10.0.32.22 22",
+        "SSH_AUTH_SOCK": "/tmp/ssh-Kd7bh8EF2G/agent.7738",
+        "SSH_CLIENT": "10.0.32.4 34390 22",
+        "SSH_CONNECTION": "10.0.32.4 34390 10.0.32.22 22",
         "USER": "root",
         "XDG_RUNTIME_DIR": "/run/user/0",
         "XDG_SESSION_CLASS": "user",
-        "XDG_SESSION_ID": "265",
+        "XDG_SESSION_ID": "18",
         "XDG_SESSION_TYPE": "tty",
         "_": "/bin/sh"
     },
     "ansible_fips": false,
     "ansible_fqdn": "lvw-romegpu-comp16.os.zeroone.tech",
     "ansible_hostname": "lvw-romegpu-comp16",
-    "ansible_kernel": "6.14.0-33-generic",
-    "ansible_kernel_version": "#33~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 17:02:30 UTC 2",
+    "ansible_kernel": "6.14.0-36-generic",
+    "ansible_kernel_version": "#36~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct 15 15:45:17 UTC 2",
     "ansible_local": {
         "openstack_ansible": {
             "ceilometer": {
@@ -96,13 +95,13 @@
                 "install_method": "source",
                 "need_db_contract": "True",
                 "need_db_expand": "True",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.1.1"
             },
             "nova": {
                 "install_method": "source",
                 "need_online_data_migrations": "True",
                 "need_service_restart": "True",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.1.1"
             }
         }
     },
@@ -115,54 +114,16 @@
     },
     "ansible_machine": "x86_64",
     "ansible_machine_id": "08770753487248e092b25c5567033015",
-    "ansible_mounts": [
-        {
-            "block_available": 224708418,
-            "block_size": 4096,
-            "block_total": 239946685,
-            "block_used": 15238267,
-            "device": "/dev/nvme0n1p2",
-            "dump": 0,
-            "fstype": "ext4",
-            "inode_available": 60901622,
-            "inode_total": 61022208,
-            "inode_used": 120586,
-            "mount": "/",
-            "options": "rw,relatime",
-            "passno": 0,
-            "size_available": 920405680128,
-            "size_total": 982821621760,
-            "uuid": "c0e1ec9a-5796-4b83-a89c-30b4c7c2d3cc"
-        },
-        {
-            "block_available": 129240,
-            "block_size": 4096,
-            "block_total": 130812,
-            "block_used": 1572,
-            "device": "/dev/nvme0n1p1",
-            "dump": 0,
-            "fstype": "vfat",
-            "inode_available": 0,
-            "inode_total": 0,
-            "inode_used": 0,
-            "mount": "/boot/efi",
-            "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro",
-            "passno": 0,
-            "size_available": 529367040,
-            "size_total": 535805952,
-            "uuid": "63A0-6D50"
-        }
-    ],
     "ansible_nodename": "lvw-romegpu-comp16",
     "ansible_os_family": "Debian",
     "ansible_pkg_mgr": "apt",
     "ansible_proc_cmdline": {
-        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-33-generic",
+        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-36-generic",
         "amd_iommu": "on",
         "kvm.ignore_msrs": "1",
         "ro": true,
         "root": "UUID=c0e1ec9a-5796-4b83-a89c-30b4c7c2d3cc",
-        "vfio_pci.ids": "10de:27b2"
+        "vfio_pci.ids": "10de:27b2,10de:22bc"
     },
     "ansible_processor": [
         "0",

@@ -70,6 +70,19 @@ _zun_hosts: &zun
   m710x-c3n1:
     management_ip: 10.0.13.20
     ip: 10.0.33.2
+_ovn-infra_hosts: &ovn-infra
+  ovn1:
+    management_ip: 10.0.13.5
+    ip: 10.0.40.1
+    no_containers: true
+  ovn2:
+    management_ip: 10.0.13.6
+    ip: 10.0.40.2
+    no_containers: true
+  ovn3:
+    management_ip: 10.0.13.7
+    ip: 10.0.40.3
+    no_containers: true
 _infra_hosts: &infra
   infra-01:
     management_ip: 10.0.13.10
@@ -224,6 +237,18 @@ _compute_hosts: &compute
           cross_az_attach: True
         pci:
           report_in_placement: True
+  lvw-esc4000g4-comp15:
+    management_ip: 10.0.13.27
+    ip: 10.0.32.21
+    host_vars:
+      nova_nova_conf_overrides:
+        DEFAULT:
+          default_availability_zone: "{{ availability_zone  }}"
+          default_schedule_zone: "{{ availability_zone  }}"
+        cinder:
+          cross_az_attach: True
+        pci:
+          report_in_placement: True
 infra_hosts: *infra
 shared-infra_hosts: *infra
 repo-infra_hosts: *infra
@@ -239,11 +264,11 @@ metrics_hosts: *infra
 metering-compute_hosts: *compute
 metering-infra_hosts: *infra
 network-gateway_hosts: *compute
-network-northd_hosts: *infra
+network-northd_hosts: *ovn-infra
 storage-infra_hosts: *infra 
 zun-compute_hosts: *zun
 zun-infra_hosts: *infra
-skyline_dashboard_hosts: *infra
+#skyline_dashboard_hosts: *infra
 storage_hosts:   
   infra-01:
     management_ip: 10.0.13.10

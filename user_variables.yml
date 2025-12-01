@@ -29,6 +29,27 @@ rabbitmq_port_bindings:
     "0.0.0.0": 5671
   tcp_listeners:
     "0.0.0.0": 5672
+rabbitmq_gpg_keys:
+  - id: '0A9AF2115F4687BD29803A206B73A36E6026DFCA'
+    keyserver: 'https://keys.openpgp.org/vks/v1/by-fingerprint/'
+rabbitmq_repo_url: "https://deb1.rabbitmq.com/rabbitmq-erlang/ubuntu/noble"
+rabbitmq_repo:
+  - name: "RabbitMQ"
+    suites: "{{ ansible_facts['distribution_release'] | lower }}"
+    uris: "{{ rabbitmq_repo_url }}"
+    signed_by: "/usr/share/keyrings/com.rabbitmq.team.gpg"
+    components: main
+    architectures: "{{ rabbitmq_architecture_mapping.get(ansible_facts['architecture']) }}"
+    state: "{{ (rabbitmq_install_method == 'external_repo') | ternary('present', 'absent') }}"
+rabbitmq_erlang_repo:
+  - name: "els_erlang"
+    suites: "{{ ansible_facts['distribution_release'] | lower }}"
+    uris: "{{ rabbitmq_repo_url }}"
+    signed_by: "/usr/share/keyrings/com.rabbitmq.team.gpg"
+    components: main
+    architectures: "{{ rabbitmq_architecture_mapping.get(ansible_facts['architecture']) }}"
+    state: "{{ (rabbitmq_install_method == 'external_repo') | ternary('present', 'absent') }}"
+
 
 ####################
 ## HAProxy config ##
@@ -125,6 +146,7 @@ neutron_policy_overrides:
   "update_port:port_security_enabled": "(rule:admin_only) or (rule:service_api) or role:member and rule:network_owner or rule:shared or projec_id:%porject_id)s"
   "update_port:device_owner": "not rule:network_device or (rule:admin_only) or (rule:service_api) or role:member and rule:network_owner or role:member and project_id:%(project_id)s"
   "update_port:binding:host_id": "(rule:admin_only) or role:member and project_id:%(project_id)s"
+neutron_ovn_distributed_fip: True
 
 ####################
 ## horizon config ##
@@ -169,6 +191,10 @@ nova_cinder_rbd_inuse: True
 nova_nova_conf_overrides:
   pci:
     report_in_placement: True
+  filter_scheduler:
+    pci_weight_multiplier: 10.0
+  libvirt:
+    swtpm_enabled: True
   #  DEFAULT:
   #    internal_service_availability_zone: "{{ availability_zone }}"
   #    default_availability_zone: "{{ availability_zone }}"
@@ -188,8 +214,11 @@ nova_libvirtd_listen_tls: 0
 nova_libvirtd_listen_tcp: 1
 nova_device_spec:
   - '{"vendor_id":"10de", "product_id":"27b2"}'
+  - '{"vendor_id":"10de", "product_id":"24b0"}'
 nova_pci_alias:
-  - '{"vendor_id":"10de", "product_id":"27b2", "device_type": "type-PCI", "name":"4000Ada"}'
+  - '{"vendor_id":"10de", "product_id":"27b2", "device_type":"type-PCI", "name":"4000Ada"}'
+  - '{"vendor_id":"10de", "product_id":"24b0", "device_type":"type-PCI", "name":"A4000"}'
+nova_galera_use_ssl: false
 
 ###################
 ## Glance config ##
@@ -200,14 +229,15 @@ glance_rbd_store_pool: images
 glance_glance_api_conf_overrides:
   taskflow_executor:
     conversion_format: "raw"
-
+  image_format:
+    require_image_format_match: false
 ###################
 ## Galera config ##
 ###################
 galera_cluster_name: "os-galera-cluster"
 openrc_region_name: "{{ region }}"
 galera_max_connections: 1600
-galera_use_ssl: True
+galera_use_ssl: false
 
 ######################
 ## Placement config ##

@@ -5,39 +5,39 @@
     },
     "ansible_architecture": "x86_64",
     "ansible_cmdline": {
-        "BOOT_IMAGE": "/boot/vmlinuz-5.15.0-153-generic",
+        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-33-generic",
         "ro": true,
-        "root": "UUID=a4a53fe0-5f4c-4541-8c11-86ce9d7c2eb7"
+        "root": "UUID=f2e9d247-7cbe-4a69-89d8-bb5a93c02ee9"
     },
     "ansible_date_time": {
-        "date": "2025-10-17",
-        "day": "17",
-        "epoch": "1760678924",
-        "epoch_int": "1760678924",
-        "hour": "05",
-        "iso8601": "2025-10-17T05:28:44Z",
-        "iso8601_basic": "20251017T052844298392",
-        "iso8601_basic_short": "20251017T052844",
-        "iso8601_micro": "2025-10-17T05:28:44.298392Z",
-        "minute": "28",
-        "month": "10",
-        "second": "44",
-        "time": "05:28:44",
+        "date": "2025-11-29",
+        "day": "29",
+        "epoch": "1764388494",
+        "epoch_int": "1764388494",
+        "hour": "03",
+        "iso8601": "2025-11-29T03:54:54Z",
+        "iso8601_basic": "20251129T035454059409",
+        "iso8601_basic_short": "20251129T035454",
+        "iso8601_micro": "2025-11-29T03:54:54.059409Z",
+        "minute": "54",
+        "month": "11",
+        "second": "54",
+        "time": "03:54:54",
         "tz": "UTC",
         "tz_dst": "UTC",
         "tz_offset": "+0000",
-        "weekday": "Friday",
-        "weekday_number": "5",
-        "weeknumber": "41",
+        "weekday": "Saturday",
+        "weekday_number": "6",
+        "weeknumber": "47",
         "year": "2025"
     },
     "ansible_distribution": "Ubuntu",
     "ansible_distribution_file_parsed": true,
     "ansible_distribution_file_path": "/etc/os-release",
     "ansible_distribution_file_variety": "Debian",
-    "ansible_distribution_major_version": "22",
-    "ansible_distribution_release": "jammy",
-    "ansible_distribution_version": "22.04",
+    "ansible_distribution_major_version": "24",
+    "ansible_distribution_release": "noble",
+    "ansible_distribution_version": "24.04",
     "ansible_dns": {
         "nameservers": [
             "127.0.0.53"
@@ -50,6 +50,7 @@
             "os.zeroone.tech",
             "ceph.zeroone.tech",
             "maas",
+            "moonshot.zeroone.tech",
             "svcs.zeroone.tech",
             "zeroone.tech"
         ]
@@ -58,13 +59,17 @@
     "ansible_effective_group_id": 0,
     "ansible_effective_user_id": 0,
     "ansible_env": {
+        "ANSIBLE_ACTION_PLUGINS": "/dev/null",
         "ANSIBLE_CACHE_PLUGIN": "jsonfile",
         "ANSIBLE_CACHE_PLUGIN_CONNECTION": "/etc/openstack_deploy/ansible_facts",
         "ANSIBLE_CACHE_PLUGIN_TIMEOUT": "86400",
-        "ANSIBLE_CALLBACK_PLUGINS": "/etc/ansible/roles/ceph-ansible/plugins/callback",
+        "ANSIBLE_CALLBACKS_ENABLED": "/dev/null",
+        "ANSIBLE_CALLBACK_PLUGINS": "/dev/null",
         "ANSIBLE_CALLBACK_RESULT_FORMAT": "yaml",
         "ANSIBLE_COLLECTIONS_PATH": "/etc/ansible",
-        "ANSIBLE_FILTER_PLUGINS": "/etc/ansible/roles/ceph-ansible/plugins/filter",
+        "ANSIBLE_COLLECTION_FILE": "/opt/openstack-ansible/ansible-collection-requirements.yml",
+        "ANSIBLE_CONFIG": "none-ansible.cfg",
+        "ANSIBLE_FILTER_PLUGINS": "/dev/null",
         "ANSIBLE_FORCE_HANDLERS": "True",
         "ANSIBLE_FORKS": "10",
         "ANSIBLE_GATHERING": "smart",
@@ -72,33 +77,47 @@
         "ANSIBLE_HOST_KEY_CHECKING": "False",
         "ANSIBLE_INJECT_FACT_VARS": "False",
         "ANSIBLE_INVENTORY": "/opt/openstack-ansible/inventory/dynamic_inventory.py,/opt/openstack-ansible/inventory/inventory.ini,/etc/openstack_deploy/inventory.ini",
-        "ANSIBLE_LIBRARY": "/etc/ansible/roles/ceph-ansible/library",
+        "ANSIBLE_LIBRARY": "/opt/openstack-ansible/playbooks/library",
         "ANSIBLE_LOG_PATH": "/openstack/log/ansible-logging/ansible.log",
+        "ANSIBLE_LOOKUP_PLUGINS": "/dev/null",
         "ANSIBLE_MODULE_UTILS": "/etc/ansible/roles/ceph-ansible/module_utils",
+        "ANSIBLE_PACKAGE": "ansible-core==2.17.11",
         "ANSIBLE_PIPELINING": "True",
         "ANSIBLE_PYTHON_INTERPRETER": "auto",
         "ANSIBLE_RETRY_FILES_ENABLED": "False",
         "ANSIBLE_ROLES_PATH": "/etc/ansible/roles:/etc/ansible/roles/ceph-ansible/roles",
+        "ANSIBLE_ROLE_FILE": "/opt/openstack-ansible/ansible-role-requirements.yml",
         "ANSIBLE_SSH_ARGS": "-C -o ControlMaster=auto -o ControlPersist=300",
         "ANSIBLE_SSH_PIPELINING": "True",
         "ANSIBLE_SSH_RETRIES": "5",
+        "ANSIBLE_STRATEGY": "linear",
+        "ANSIBLE_STRATEGY_PLUGINS": "/dev/null",
+        "ANSIBLE_TEST_PLUGINS": "/dev/null",
         "ANSIBLE_TIMEOUT": "5",
         "ANSIBLE_TRANSFORM_INVALID_GROUP_CHARS": "ignore",
-        "ANSIBLE_TRANSPORT": "openstack.osa.ssh",
+        "ANSIBLE_TRANSPORT": "smart",
+        "ANSIBLE_VARS_PLUGINS": "/dev/null",
         "CINDER_ENDPOINT_TYPE": "internalURL",
+        "CURRENT_OSA_VERSION": "31.1.1",
         "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/0/bus",
+        "DEBIAN_FRONTEND": "noninteractive",
+        "DISTRO_ID": "ubuntu",
+        "DISTRO_NAME": "Ubuntu",
+        "DISTRO_VERSION_ID": "24.04",
         "HOME": "/root",
+        "HTTPS_PROXY": "",
+        "HTTP_PROXY": "",
         "LANG": "C.UTF-8",
         "LC_ALL": "C.UTF-8",
         "LESSCLOSE": "/usr/bin/lesspipe %s %s",
         "LESSOPEN": "| /usr/bin/lesspipe %s",
         "LOGNAME": "root",
-        "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+        "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:",
         "NOVA_ENDPOINT_TYPE": "internalURL",
-        "OLDPWD": "/root",
-        "OSA_CLONE_ROOT": "/opt/openstack-ansible",
+        "OLDPWD": "/opt/openstack-ansible",
+        "OSA_CLONE_DIR": "/opt/openstack-ansible",
         "OSA_CONFIG_DIR": "/etc/openstack_deploy",
-        "OSA_VERSION": "31.0.0",
+        "OSA_WRAPPER_BIN": "scripts/openstack-ansible.sh",
         "OS_AUTH_TYPE": "password",
         "OS_AUTH_URL": "http://10.0.47.254:5000/v3",
         "OS_AUTH_VERSION": "3",
@@ -115,37 +134,44 @@
         "OS_TENANT_NAME": "admin",
         "OS_USERNAME": "admin",
         "OS_USER_DOMAIN_NAME": "Default",
-        "PATH": "/opt/ansible-runtime/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
-        "PWD": "/etc/ansible/ansible_collections/openstack/osa/playbooks",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+        "PIP_OPTS": " --constraint global-requirement-pins.txt",
+        "PWD": "/opt/openstack-ansible/scripts",
         "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
+        "SETUP_ARA": "false",
         "SHELL": "/bin/bash",
         "SHLVL": "2",
-        "SSH_CLIENT": "192.168.2.188 58931 22",
-        "SSH_CONNECTION": "192.168.2.188 58931 10.0.13.10 22",
-        "SSH_TTY": "/dev/pts/1",
+        "SSH_CLIENT": "192.168.2.168 56488 22",
+        "SSH_CONNECTION": "192.168.2.168 56488 10.0.13.10 22",
+        "SSH_DIR": "/root/.ssh",
+        "SSH_TTY": "/dev/pts/0",
         "TERM": "xterm-256color",
         "TERM_PROGRAM": "WarpTerminal",
         "TMOUT": "600",
+        "TOX_CONSTRAINTS_FILE": "file:///opt/ansible-runtime-constraints-ede55c0a79c57862b0fa5e1c71266b5e57689144.txt",
         "USER": "root",
+        "USER_ANSIBLE_REQUIREMENTS_FILE": "/etc/openstack_deploy/user-ansible-venv-requirements.txt",
+        "USER_COLLECTION_FILE": "user-collection-requirements.yml",
+        "USER_ROLE_FILE": "user-role-requirements.yml",
         "XDG_DATA_DIRS": "/usr/local/share:/usr/share:/var/lib/snapd/desktop",
         "XDG_RUNTIME_DIR": "/run/user/0",
         "XDG_SESSION_CLASS": "user",
-        "XDG_SESSION_ID": "29931",
+        "XDG_SESSION_ID": "53743",
         "XDG_SESSION_TYPE": "tty",
         "_": "/opt/ansible-runtime/bin/ansible-playbook"
     },
     "ansible_fips": false,
     "ansible_fqdn": "infra-01.cloud.zeroone.tech",
     "ansible_hostname": "infra-01",
-    "ansible_kernel": "5.15.0-153-generic",
-    "ansible_kernel_version": "#163-Ubuntu SMP Thu Aug 7 16:37:18 UTC 2025",
+    "ansible_kernel": "6.14.0-33-generic",
+    "ansible_kernel_version": "#33~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 17:02:30 UTC 2",
     "ansible_local": {
         "openstack_ansible": {
             "cinder": {
                 "install_method": "source",
                 "need_online_data_migrations": "False",
                 "need_service_restart": "True",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "galera": {
                 "deployed": "True",
@@ -153,99 +179,85 @@
             },
             "glance": {
                 "install_method": "source",
-                "venv_tag": "31.0.0"
-            },
-            "gnocchi": {
-                "venv_tag": "29.0.2.dev1"
+                "venv_tag": "31.0.1"
             },
             "heat": {
                 "install_method": "source",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "horizon": {
                 "install_method": "source",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "keystone": {
                 "install_method": "source",
                 "need_db_contract": "False",
                 "need_db_expand": "False",
-                "need_db_migrate": "False",
-                "venv_tag": "31.0.0"
-            },
-            "magnum": {
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "neutron": {
                 "install_method": "source",
                 "need_db_contract": "True",
                 "need_db_expand": "False",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "nova": {
                 "install_method": "source",
                 "need_online_data_migrations": "False",
                 "need_service_restart": "True",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "octavia": {
                 "install_method": "source",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "placement": {
                 "install_method": "source",
                 "need_online_data_migrations": "False",
-                "venv_tag": "31.0.0"
-            },
-            "skyline": {
-                "need_service_restart": "True",
-                "venv_tag": "31.0.0"
+                "venv_tag": "31.0.1"
             },
             "uwsgi": {
-                "venv_tag": "31.0.0"
-            },
-            "zun": {
-                "venv_tag": "30.0.0"
+                "venv_tag": "31.0.1"
             }
         }
     },
     "ansible_lsb": {
-        "codename": "jammy",
-        "description": "Ubuntu 22.04.5 LTS",
+        "codename": "noble",
+        "description": "Ubuntu 24.04.3 LTS",
         "id": "Ubuntu",
-        "major_release": "22",
-        "release": "22.04"
+        "major_release": "24",
+        "release": "24.04"
     },
     "ansible_machine": "x86_64",
-    "ansible_machine_id": "393f28ff182e4b8f9e63d07da147c600",
+    "ansible_machine_id": "247e131e71fe43abb7f27be5bcdc7f47",
     "ansible_nodename": "infra-01",
     "ansible_os_family": "Debian",
     "ansible_pkg_mgr": "apt",
     "ansible_proc_cmdline": {
-        "BOOT_IMAGE": "/boot/vmlinuz-5.15.0-153-generic",
+        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-33-generic",
         "ro": true,
-        "root": "UUID=a4a53fe0-5f4c-4541-8c11-86ce9d7c2eb7"
+        "root": "UUID=f2e9d247-7cbe-4a69-89d8-bb5a93c02ee9"
     },
     "ansible_python": {
-        "executable": "/opt/ansible-runtime/bin/python3.10",
+        "executable": "/opt/ansible-runtime/bin/python",
         "has_sslcontext": true,
         "type": "cpython",
         "version": {
             "major": 3,
-            "micro": 12,
-            "minor": 10,
+            "micro": 3,
+            "minor": 12,
             "releaselevel": "final",
             "serial": 0
         },
         "version_info": [
             3,
-            10,
             12,
+            3,
             "final",
             0
         ]
     },
-    "ansible_python_version": "3.10.12",
+    "ansible_python_version": "3.12.3",
     "ansible_real_group_id": 0,
     "ansible_real_user_id": 0,
     "ansible_selinux": {
@@ -253,13 +265,11 @@
     },
     "ansible_selinux_python_present": true,
     "ansible_service_mgr": "systemd",
-    "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAKSEj7amu/vzp+AdJYCbUt5lnN4WWU8o7o6U+DlpCVvNPDJePlvFhz07INUatD3b64ksd0xZ1++3znULYpJcNijibbfzsAuvg0foK85CNfHliFZjzwJ7G5Psah69L0XnMKnG9hzKPOaclv+I7kf/jDXfpRXVc4MkdUrJLwr2dow5AAAAFQCmddDXlvhhyyrzP7O9+WrJ45THdQAAAIEAkqupwX4zeZrFCUjENHz4AZGA7syeoLkFfeqMjnwcLtOiEJKl4fhQPxan2F28xpWHanBQg+DDNDNpARXW1Gj4MoYiMbznPZHcevhNoxGrf9qzLkqgN6o2uT3A3CvyQbEn0uJdbnIzPmEJkA1Vhm2XYg4YgQakODBckqMm5fh7nfsAAACBAJHyE6W75Ezab4XSQx8dk/ecjuE+UjOBs3WXXe+CxvWwwkYhlGfiGGSygNtTH+q+QxXss3GsX/X2XrfD2rkhmABOu5tXEgkoINVAt8n87KxBhMJjR8sw94QaiOD7xs2WkoPkHn7+8cqmzLEYasLMS4dtTeuCiyGhJfsE0LSMnMvh",
-    "ansible_ssh_host_key_dsa_public_keytype": "ssh-dss",
-    "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPjWB0ZacRgai90DYxotMAi30/i4TluFSOootRWwmu7bLcmJfn0p5xHwWCr1cBNzuglknq1zMyJXrPYpT+kuYYE=",
+    "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAQVaRu2oz2M3BhhusKf68JfSmjtr+eMYwSye0aFDI+eH9UziBkOx6dOGF8ShIJyigzBjpjECcYdfPnYWK1ExQo=",
     "ansible_ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256",
-    "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIPEUG0AZp7AlxCE0vUv2CSGEimCCbt1umIG/MHhYslaZ",
+    "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIPYQe/sG6TYPvWt2aOkDrIWolMXKUtzNXpLKKBGGwS4y",
     "ansible_ssh_host_key_ed25519_public_keytype": "ssh-ed25519",
-    "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQDCwLUrF0RIvFXHxdM50wVZlJd6o0KsWxS+H005iDfzJ1JFakiJMMdofDaoqQoRZQBHIhuxgM4pn1F8oXvtZpuIw40Dfooh38D6exrUXS8zTTXex9epougAeXUH8P5NVXfRPqm3tayeKnRyybt91NYPLU7QZ0TQIJzli61Eg8TRDPgvePCprjeO/aYBp+4BUJQmpPUaxcoZIXRiYFgRFcYz61VzEG+gBeE39veYdL7dRCA5Iz479yFLv99Pi5GNeSj17Z5vgpfYpY0uY/8JB+jJKW32k6GEgbiQL2gCYInVghk5Vkz9qG11QOgGdZQ3b/0bLfQLxiaPiIBrobuJaOCHcCTcO8+GtVL7MJSyJhBSnBGnZw4rlI0V+kQIJehFbUvk2pj6CSBikSIL8zFFMtzjqijqoNRdN+wDsDwJfdGRgZSXbqXWTYNlzZ9xMZNpBwevxsx6V6/yPTxkSDIITwLannFoek0yzGp3vNNXEFiv/W1uzrGkwnYYtda2fpUbdq0=",
+    "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQCFtUiBPP5H1pZlFrJy1leEA4PYMHtqxEEbmpRmrlpwCCaqJalnZELY/tzMyURAwznsAiOyFZpCtOoifbf7FMZtsC4T0zGtR8lJGPTuFRcNFzpKfHLsSw8YKrjgcQvxQzHVRFpOdGaEO50fno7Z/Vb7QlAu3DJpEkRL1NYe5ylv/Y/H1zK3vSVxVfnF7MWjhdbZSW44eYUJcFkAIsDHRP0MWUQzXiW724QBymTUeehEyEEnFOvz9kx7k/jHLq/eK9K5ddPvv9WmTR8xd3w0aR2I5Cd1DYJrpuMUmLFEYkaD5alwhLLxO9mKFrQ7TAw5kEMSxSwL1JXaHpsT5C6tQclPqmQlRdnpeC+DPGckzAy245ZvDQ+Lkgzt9Huj+VkOwO/kPaILI8U2ID+O7Fax4vKTH1zXiDRj4LbRCwdVw6DIHGRUf8KhXwx3xZXLPGZfvHt733ZCoVOEIy50PqmQdJbCoWyswp/ToJUV8ELRIJFzU6FA5mu3W1uZPcnc4rl7cNM=",
     "ansible_ssh_host_key_rsa_public_keytype": "ssh-rsa",
     "ansible_system": "Linux",
     "ansible_system_capabilities": [],
@@ -272,10 +282,9 @@
     "ansible_user_uid": 0,
     "ansible_userspace_architecture": "x86_64",
     "ansible_userspace_bits": "64",
-    "discovered_interpreter_python": "/opt/ansible-runtime/bin/python3.10",
+    "discovered_interpreter_python": "/usr/bin/python3.12",
     "gather_subset": [
-        "!all",
-        "min"
+        "!all"
     ],
     "module_setup": true
 }

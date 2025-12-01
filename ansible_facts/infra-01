@@ -1,3 +1,299 @@
 {
-    "discovered_interpreter_python": "/usr/bin/python3.10"
+    "ansible_apparmor": {
+        "status": "enabled"
+    },
+    "ansible_architecture": "x86_64",
+    "ansible_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-36-generic",
+        "ro": true,
+        "root": "UUID=f2e9d247-7cbe-4a69-89d8-bb5a93c02ee9"
+    },
+    "ansible_date_time": {
+        "date": "2025-12-01",
+        "day": "01",
+        "epoch": "1764554574",
+        "epoch_int": "1764554574",
+        "hour": "02",
+        "iso8601": "2025-12-01T02:02:54Z",
+        "iso8601_basic": "20251201T020254844966",
+        "iso8601_basic_short": "20251201T020254",
+        "iso8601_micro": "2025-12-01T02:02:54.844966Z",
+        "minute": "02",
+        "month": "12",
+        "second": "54",
+        "time": "02:02:54",
+        "tz": "UTC",
+        "tz_dst": "UTC",
+        "tz_offset": "+0000",
+        "weekday": "Monday",
+        "weekday_number": "1",
+        "weeknumber": "48",
+        "year": "2025"
+    },
+    "ansible_distribution": "Ubuntu",
+    "ansible_distribution_file_parsed": true,
+    "ansible_distribution_file_path": "/etc/os-release",
+    "ansible_distribution_file_variety": "Debian",
+    "ansible_distribution_major_version": "24",
+    "ansible_distribution_release": "noble",
+    "ansible_distribution_version": "24.04",
+    "ansible_dns": {
+        "nameservers": [
+            "127.0.0.53"
+        ],
+        "options": {
+            "edns0": true,
+            "trust-ad": true
+        },
+        "search": [
+            "os.zeroone.tech",
+            "ceph.zeroone.tech",
+            "maas",
+            "moonshot.zeroone.tech",
+            "svcs.zeroone.tech",
+            "zeroone.tech"
+        ]
+    },
+    "ansible_domain": "cloud.zeroone.tech",
+    "ansible_effective_group_id": 0,
+    "ansible_effective_user_id": 0,
+    "ansible_env": {
+        "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/0/bus",
+        "HOME": "/root",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LOGNAME": "root",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
+        "PWD": "/root",
+        "REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt",
+        "SHELL": "/bin/bash",
+        "SHLVL": "0",
+        "SSH_AUTH_SOCK": "/tmp/ssh-TPJI3WoplR/agent.255000",
+        "SSH_CLIENT": "10.0.32.4 38292 22",
+        "SSH_CONNECTION": "10.0.32.4 38292 10.0.32.4 22",
+        "USER": "root",
+        "XDG_RUNTIME_DIR": "/run/user/0",
+        "XDG_SESSION_CLASS": "user",
+        "XDG_SESSION_ID": "1329",
+        "XDG_SESSION_TYPE": "tty",
+        "_": "/bin/sh"
+    },
+    "ansible_fips": false,
+    "ansible_fqdn": "infra-01.cloud.zeroone.tech",
+    "ansible_hostname": "infra-01",
+    "ansible_kernel": "6.14.0-36-generic",
+    "ansible_kernel_version": "#36~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct 15 15:45:17 UTC 2",
+    "ansible_local": {
+        "openstack_ansible": {
+            "cinder": {
+                "install_method": "source",
+                "need_online_data_migrations": "False",
+                "need_service_restart": "True",
+                "venv_tag": "31.1.1"
+            },
+            "galera": {
+                "deployed": "True",
+                "initialized": "True"
+            },
+            "glance": {
+                "install_method": "source",
+                "venv_tag": "31.1.1"
+            },
+            "heat": {
+                "install_method": "source",
+                "venv_tag": "31.1.1"
+            },
+            "horizon": {
+                "install_method": "source",
+                "venv_tag": "31.1.1"
+            },
+            "keystone": {
+                "install_method": "source",
+                "need_db_contract": "False",
+                "need_db_expand": "False",
+                "venv_tag": "31.1.1"
+            },
+            "neutron": {
+                "install_method": "source",
+                "need_db_contract": "True",
+                "need_db_expand": "False",
+                "venv_tag": "31.1.1"
+            },
+            "nova": {
+                "install_method": "source",
+                "need_online_data_migrations": "False",
+                "need_service_restart": "True",
+                "venv_tag": "31.1.1"
+            },
+            "octavia": {
+                "install_method": "source",
+                "venv_tag": "31.1.1"
+            },
+            "placement": {
+                "install_method": "source",
+                "need_online_data_migrations": "False",
+                "venv_tag": "31.1.1"
+            },
+            "uwsgi": {
+                "venv_tag": "31.1.1"
+            }
+        }
+    },
+    "ansible_lsb": {
+        "codename": "noble",
+        "description": "Ubuntu 24.04.3 LTS",
+        "id": "Ubuntu",
+        "major_release": "24",
+        "release": "24.04"
+    },
+    "ansible_machine": "x86_64",
+    "ansible_machine_id": "247e131e71fe43abb7f27be5bcdc7f47",
+    "ansible_nodename": "infra-01",
+    "ansible_os_family": "Debian",
+    "ansible_pkg_mgr": "apt",
+    "ansible_proc_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-6.14.0-36-generic",
+        "ro": true,
+        "root": "UUID=f2e9d247-7cbe-4a69-89d8-bb5a93c02ee9"
+    },
+    "ansible_processor": [
+        "0",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "1",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "2",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "3",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "4",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "5",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "6",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "7",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "8",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "9",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "10",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "11",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "12",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "13",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "14",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "15",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "16",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "17",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "18",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "19",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "20",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "21",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "22",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "23",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "24",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "25",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "26",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz",
+        "27",
+        "GenuineIntel",
+        "Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz"
+    ],
+    "ansible_processor_cores": 14,
+    "ansible_processor_count": 1,
+    "ansible_processor_nproc": 28,
+    "ansible_processor_threads_per_core": 2,
+    "ansible_processor_vcpus": 28,
+    "ansible_python": {
+        "executable": "/usr/bin/python3.12",
+        "has_sslcontext": true,
+        "type": "cpython",
+        "version": {
+            "major": 3,
+            "micro": 3,
+            "minor": 12,
+            "releaselevel": "final",
+            "serial": 0
+        },
+        "version_info": [
+            3,
+            12,
+            3,
+            "final",
+            0
+        ]
+    },
+    "ansible_python_version": "3.12.3",
+    "ansible_real_group_id": 0,
+    "ansible_real_user_id": 0,
+    "ansible_selinux": {
+        "status": "disabled"
+    },
+    "ansible_selinux_python_present": true,
+    "ansible_service_mgr": "systemd",
+    "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAQVaRu2oz2M3BhhusKf68JfSmjtr+eMYwSye0aFDI+eH9UziBkOx6dOGF8ShIJyigzBjpjECcYdfPnYWK1ExQo=",
+    "ansible_ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256",
+    "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIPYQe/sG6TYPvWt2aOkDrIWolMXKUtzNXpLKKBGGwS4y",
+    "ansible_ssh_host_key_ed25519_public_keytype": "ssh-ed25519",
+    "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQCFtUiBPP5H1pZlFrJy1leEA4PYMHtqxEEbmpRmrlpwCCaqJalnZELY/tzMyURAwznsAiOyFZpCtOoifbf7FMZtsC4T0zGtR8lJGPTuFRcNFzpKfHLsSw8YKrjgcQvxQzHVRFpOdGaEO50fno7Z/Vb7QlAu3DJpEkRL1NYe5ylv/Y/H1zK3vSVxVfnF7MWjhdbZSW44eYUJcFkAIsDHRP0MWUQzXiW724QBymTUeehEyEEnFOvz9kx7k/jHLq/eK9K5ddPvv9WmTR8xd3w0aR2I5Cd1DYJrpuMUmLFEYkaD5alwhLLxO9mKFrQ7TAw5kEMSxSwL1JXaHpsT5C6tQclPqmQlRdnpeC+DPGckzAy245ZvDQ+Lkgzt9Huj+VkOwO/kPaILI8U2ID+O7Fax4vKTH1zXiDRj4LbRCwdVw6DIHGRUf8KhXwx3xZXLPGZfvHt733ZCoVOEIy50PqmQdJbCoWyswp/ToJUV8ELRIJFzU6FA5mu3W1uZPcnc4rl7cNM=",
+    "ansible_ssh_host_key_rsa_public_keytype": "ssh-rsa",
+    "ansible_system": "Linux",
+    "ansible_system_capabilities": [],
+    "ansible_system_capabilities_enforced": "False",
+    "ansible_user_dir": "/root",
+    "ansible_user_gecos": "root",
+    "ansible_user_gid": 0,
+    "ansible_user_id": "root",
+    "ansible_user_shell": "/bin/bash",
+    "ansible_user_uid": 0,
+    "ansible_userspace_architecture": "x86_64",
+    "ansible_userspace_bits": "64",
+    "discovered_interpreter_python": "/usr/bin/python3.12",
+    "gather_subset": [
+        "!all:min"
+    ],
+    "module_setup": true
 }
